@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Humboldt Dispute Resolution Conference 2025</title>
+      <style>
+        /* Font-face definitions */
+        @font-face {
+          font-family: 'Alte Haas Grotesk';
+          src: url('fonts/AlteHaasGroteskRegular.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'Alte Haas Grotesk';
+          src: url('fonts/AlteHaasGroteskBold.ttf') format('truetype');
+          font-weight: bold;
+          font-style: normal;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        html {
+          scroll-behavior: smooth;
+          overflow-x: hidden;
+        }
+
+        body {
+          font-family: 'Alte Haas Grotesk', sans-serif;
+          font-weight: bold;
+          line-height: 1.6;
+          color: #fff;
+          background: #1a1a1a;
+          overflow-x: hidden;
+          width: 100%; /* Ensure body doesn't overflow */
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 11px 40px;
+            background: rgba(26, 26, 26, 0.275);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .nav-logo {
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            color: #999;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #999;
+            cursor: pointer;
+            margin-left: 16px;
+        }
+
+        .nav-right a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 400;
+        }
+
+        .nav-right a:hover {
+            color: #fff;
+        }
+
+        .nav-register-btn {
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .nav-register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Pill Button Style */
+        .pill-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            background: #fff;
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .pill-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .pill-btn.secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .pill-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: relative;
+            background-color: #00000080;
+            background-image: url('images/background.png');
+            background-blend-mode: darken;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            transition: border-radius 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .hero-left {
+            max-width: 500px;
+        }
+
+        .hero-left h1 {
+            font-size: 48px;
+            font-style: bold;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero-left .subtitle {
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .hero-right {
+            text-align: right;
+            margin-top: 80px;
+            margin-bottom: -100px;
+        }
+
+        .hero-right h2 {
+            font-size: 30px;
+            font-style: normal;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero-right .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-right .cta:hover {
+            gap: 15px;
+        }
+
+        .hero-right .cta span {
+            font-size: 18px;
+        }
+
+        .hero-logo {
+            width: 250px;
+            max-width: 22vw;
+            margin-bottom: 16px;
+            display: block;
+            margin-left: 0;
+        }
+
+        /* Badge */
+        .badge {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: #000000;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 40px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+            color: #fff;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #999;
+            max-width: 600px;
+        }
+
+        /* About Section */
+        .section-about {
+            background: #fff;
+            color: #111;
+            width: 100vw;
+            max-width: none;
+            margin: 0;
+            border-radius: 0 0 0 0;
+            padding-left: 40px;
+            padding-right: 40px;
+            transition: box-shadow 0.4s, border-radius 0.4s, top 0.4s;
+            margin-bottom: 120px;
+        }
+        .section-about .section-header h2,
+        .section-about .section-header p {
+            color: #000;
+        }
+        .section-about .about-content {
+            background: transparent;
+            padding: 0;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .about-text {
+            padding-left: 0;
+        }
+
+        .about-text h3 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            color: #000;
+        }
+
+        .about-text p {
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .stat {
+            border-left: 1px solid #333;
+            padding-left: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 200;
+            letter-spacing: -2px;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-about.rounded {
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+        .hero.rounded {
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        /* Programme Section */
+        .programme-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            background: #ffffff00;
+            border-radius: 0;
+            overflow: hidden;
+            /* border-top: 1px solid #222; */
+            /* border-bottom: 1px solid #22222200; */
+        }
+        .programme-row {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #222;
+            background: #ffffff00;
+            transition: background 0.2s;
+            position: relative;
+        }
+        .programme-row:last-of-type {
+            border-bottom: none !important;
+        }
+        .programme-number {
+            font-size: 48px;
+            font-family: 'Alte Haas Grotesk', serif;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            min-width: 60px;
+            letter-spacing: -2px;
+            text-align: right;
+            padding-right: 30px;
+        }
+        .programme-main {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .programme-time {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 400;
+            margin-bottom: 10px;
+            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
+        }
+        .programme-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
+        }
+        .programme-bracket {
+            font-size: 25px;
+            font-variant: small-caps;
+            letter-spacing: -0.7px;
+            color: #ffffff;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+        .programme-desc {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: 400;
+            margin-top: 0.2em;
+        }
+        .programme-cta {
+            color: #fff;
+            opacity: 0.6;
+            font-size: 18px;
+            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            margin-bottom: 0;
+            transition: opacity 0.2s;
+            user-select: none;
+        }
+        .programme-row:hover .programme-cta,
+        .programme-row.active .programme-cta {
+            opacity: 1;
+        }
+        .programme-panelists {
+            width: 100%;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            background: #f7f7f700;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: normal;
+            padding: 0 10px;
+            border-radius: 0 0 12px 12px;
+            border-top: 2px solid #7a626200;
+            margin: 0;
+            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+            grid-column: 1 / -1;
+            position: relative;
+        }
+        .programme-panelists.open {
+            opacity: 1;
+            max-height: 1200px;
+            padding: 10px 96px;
+            margin-bottom: -10px;
+        }
+        .programme-panelists.open::after {
+            content: '';
+            display: block;
+            border-bottom: 1px solid #222;
+            margin: 32px -48px 0 -48px;
+        }
+        @media (max-width: 900px) {
+            .programme-row { grid-template-columns: 48px 1fr; padding: 24px 0 16px 0; }
+            .programme-title { font-size: 18px; }
+            .programme-desc { font-size: 14px; }
+            .programme-number { font-size: 24px; min-width: 32px; }
+            .programme-time { font-size: 14px; }
+            .programme-bracket { font-size: 12px; }
+            .programme-panelists, .programme-panelists.open { font-size: 14px; padding: 10px 8px; }
+            .programme-cta { font-size: 12px; }
+            .hero {
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: center;
+                padding: 0 10px;
+                height: auto;
+            }
+            .hero-left h1 {
+                font-size: 32px;
+            }
+            .hero-logo {
+                width: 60vw;
+                max-width: 95vw;
+                margin: 64px auto 24px auto;
+                display: block;
+            }
+            .hero-right {
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            .badge {
+                display: none;
+            }
+            .section-about {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .about-text {
+                padding-left: 0;
+            }
+        }
+
+        /* Speakers Section */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .speaker-card {
+            text-align: center;
+        }
+
+        .speaker-avatar {
+            width: 120px;
+            height: 120px;
+            background: #333;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .speaker-name {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .speaker-role {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .speaker-company {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Venue Section */
+        .venue-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .venue-details h3 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .venue-details p {
+            color: #ccc;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .venue-map {
+            background: #333;
+            height: 400px;
+            border-radius: 8px;
+        }
+
+        /* Sponsors Section */
+        /* Sponsors Carousel Section CSS */
+        .sponsors-carousel-section {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+            margin: 60px 0;
+            overflow: hidden;
+        }
+
+        .sponsors-carousel {
+            display: flex;
+            animation: scroll-sponsors 15s linear infinite;
+            gap: 80px;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .sponsor-logo-text {
+            font-family: 'Alte Haas Grotesk', sans-serif;
+            font-size: 28px;
+            font-style: bold;
+            color: #000000;
+            white-space: nowrap;
+            flex-shrink: 0;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            letter-spacing: -1px;
+        }
+
+        .sponsor-logo-text:hover {
+            opacity: 1;
+            color: #333;
+        }
+
+        @keyframes scroll-sponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .sponsors-carousel { gap: 40px; }
+            .sponsor-logo-text { font-size: 20px; }
+        }
+        /* Footer with rounded corners */
+        .footer-wrapper {
+            background: #f5f5f5;
+
+            margin: 20px 0 0 0;
+            overflow: hidden;
+
+        }
+
+        .footer-banner {
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            background: #1a1a1a;
+            color: #f5f5f5;
+            text-align: center;
+            font-size: 13vw;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            margin-bottom: -48px;
+            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
+            z-index: 2;
+            user-select: none;
+        }
+
+
+        /* Registration Section */
+        .registration {
+            text-align: center;
+            background: #222;
+            padding: 100px 40px;
+            border-radius: 8px;
+        }
+
+        .registration h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .registration p {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .deadline {
+            background: #333;
+            padding: 20px 40px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .deadline strong {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 150px 60px;
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+            gap: 150px;
+            color: #1a1a1a;
+            justify-items: start;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .footer-section {
+            text-align: left;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+            font-weight: 300;
+        }
+
+        .footer-section a:hover {
+            color: #1a1a1a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding: 0 10px;
+            }
+            .hero-left h1 {
+                font-size: 32px;
+            }
+            .hero-right {
+                text-align: center;
+                margin-top: 40px;
+            }
+            .badge {
+                display: none;
+            }
+            .section {
+                padding: 40px 8px;
+            }
+            .about-content {
+                display: block;
+                gap: 0;
+            }
+            .about-text {
+                margin-bottom: 32px;
+                max-width: 100%;
+            }
+            .about-stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 24px;
+                justify-content: center;
+            }
+            .stat {
+                border-left: none;
+                border-top: 1px solid #333;
+                padding-left: 0;
+                padding-top: 16px;
+                min-width: 120px;
+                flex: 1 1 40%;
+                text-align: center;
+            }
+            .venue-info {
+                display: block;
+                gap: 0;
+            }
+            .venue-details, .venue-map {
+                margin-bottom: 32px;
+            }
+            .footer-wrapper {
+                margin: 40px 8px 8px;
+                border-radius: 12px;
+            }
+            .footer {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+                justify-items: start;
+            }
+            .speakers-grid,
+            .sponsor-tiers {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            /* Ensure no horizontal overflow for the entire page */
+            html, body {
+                overflow-x: hidden !important; /* Use !important to strongly enforce */
+            }
+            .nav {
+                padding: 20px 16px;
+            }
+            .nav-links {
+                display: none !important;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 26, 0.275);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+                z-index: 1001;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            }
+            .nav-links.open {
+                display: flex !important;
+            }
+            .nav-links li {
+                border-bottom: 1px solid #333;
+                text-align: left;
+                padding: 18px 24px;
+            }
+            .nav-toggle {
+                display: block !important;
+                position: absolute;
+                right: 16px;
+                top: 16px;
+                margin-left: 0;
+            }
+            .nav-right {
+                display: none;
+            }
+            .hero {
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: center;
+                padding: 0 10px;
+                height: auto;
+            }
+            .hero-left h1 {
+                font-size: 32px;
+            }
+            .hero-logo {
+                width: 60vw;
+                max-width: 95vw;
+                margin: 64px auto 24px auto;
+                display: block;
+            }
+            .hero-right {
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            .badge {
+                display: none;
+            }
+            .section {
+                padding: 40px 8px;
+            }
+            .about-content {
+                display: block;
+                gap: 0;
+            }
+            .about-text {
+                margin-bottom: 32px;
+                max-width: 100%;
+            }
+            .about-stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 24px;
+                justify-content: center;
+            }
+            .stat {
+                border-left: none;
+                border-top: 1px solid #333;
+                padding-left: 0;
+                padding-top: 16px;
+                min-width: 120px;
+                flex: 1 1 40%;
+                text-align: center;
+            }
+            .venue-info {
+                display: block;
+                gap: 0;
+            }
+            .venue-details, .venue-map {
+                margin-bottom: 32px;
+            }
+            .speakers-grid,
+            .sponsor-tiers {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            /* Simplified Mobile Footer Styles */
+            .footer-banner {
+                font-size: 19vw;
+                margin-bottom: -24px; /* Keep existing margin */
+                width: 100%;
+                border-radius: 0;
+                margin-left: 0; /* Ensure no side margin */
+                margin-right: 0; /* Ensure no side margin */
+                padding-left: 0; /* Ensure no side padding */
+                padding-right: 0; /* Ensure no side padding */
+                text-align: center;
+                left: auto; /* Remove any fixed positioning */
+                right: auto; /* Remove any fixed positioning */
+                transform: none; /* Remove any transform */
+            }
+            .footer-wrapper {
+                width: 100%;
+                border-radius: 0;
+                margin-top: 40px; /* Keep top margin as before */
+                margin-bottom: 0; /* Ensure no bottom margin */
+                margin-left: 0; /* Ensure no side margin */
+                margin-right: 0; /* Ensure no side margin */
+                padding-left: 0; /* Ensure no side padding */
+                padding-right: 0; /* Ensure no side padding */
+                background: #fff; /* Ensure white background */
+                overflow: hidden; /* Prevent internal overflow */
+                left: auto; /* Remove any fixed positioning */
+                right: auto; /* Remove any fixed positioning */
+                transform: none; /* Remove any transform */
+            }
+            .footer-wrapper .footer {
+                width: 100%;
+                border-radius: 0;
+                background: #fff; /* Ensure white background */
+                padding: 20px 8px; /* Apply internal padding */
+                gap: 20px; /* Keep existing gap */
+                grid-template-columns: 1fr; /* Single column layout */
+                justify-items: start; /* Left align grid items */
+                left: auto; /* Remove any fixed positioning */
+                right: auto; /* Remove any fixed positioning */
+                transform: none; /* Remove any transform */
+            }
+            .footer-section {
+                padding: 0;
+                text-align: left;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-logo">HDRC 2025</div>
+        <button class="nav-toggle" aria-label="Open navigation" onclick="toggleNavMenu()">☰</button>
+        <ul class="nav-links">
+            <li><a href="#register">Register</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#programme">Programme</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#venue">Venue</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#register" class="nav-register-btn">Register <span>↗</span></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <img src="images/HU.svg" alt="Humboldt University Logo" class="hero-logo" />
+            <!-- <p class="subtitle">Proud partner of the Berlin Dispute Resolution Days</p> -->
+            <h1>Humboldt<br>Dispute Resolution<br>Conference 2025</h1>
+            <p class="subtitle" style="margin-top: 20px;">Monday, 8 September 2025</p>
+        </div>
+        <div class="hero-right">
+            <h2>The Rule of Law<br>
+            and<br>
+            International Arbitration</h2>
+            <a href="#register" class="pill-btn">
+                Register <span>↗</span>
+            </a>
+        </div>
+        <div class="badge">LIMITED SEATS</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-about">
+        <div class="section-header">
+            <h2>About the Conference</h2>
+            <p>Where Berlin's spirit of freedom meets the cutting edge of international dispute resolution</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+              <h3>The Fourth Annual HDRC</h3>
+              <p>On behalf of Professor Dr. Gerhard Wagner, Academic Director of the International Dispute Resolution (IDR) LL.M., and eight generations of IDR LL.M. Alumni, we are delighted to invite you to the fourth annual Humboldt Dispute Resolution Conference.</p>
+              <p>This year, the HDRC turns its focus to the Rule of Law in international arbitration—at a time when it faces unprecedented challenges. From the rise of artificial intelligence and climate litigation to fractured supply chains and shifting geopolitical power, the conference explores whether the Rule of Law can hold steady amidst global disruption.</p>
+
+            </div>
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">10th</div>
+                    <div class="stat-label">Anniversary</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Alumni</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4th</div>
+                    <div class="stat-label">Annual Conference</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Panels</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programme Section -->
+    <section id="programme" class="section">
+        <div class="section-header">
+            <h2>Programme</h2>
+            <p>A carefully curated day of insights and discussions</p>
+        </div>
+        <div class="programme-grid">
+            <div class="programme-row" onclick="togglePanelists(this)">
+                <div class="programme-number">1.</div>
+                <div class="programme-main">
+                    <div class="programme-time">12:30-12:40</div>
+                    <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
+                    <div class="programme-cta" style="display:none;"></div>
+                    <div class="programme-desc">Opening remarks and introduction to the day's events</div>
+                </div>
+            </div>
+            <div class="programme-row" onclick="togglePanelists(this)">
+                <div class="programme-number">2.</div>
+                <div class="programme-main">
+                    <div class="programme-time">12:40-13:00</div>
+                    <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
+
+                    <div class="programme-desc">Setting the stage for innovative dispute resolution discussions</div>
+                    <div class="programme-cta">View <span>↗</span></div>
+                  </div>
+            </div>
+            <div class="programme-panelists">
+                <strong>Keynote:</strong><br>
+                Prof. Gerhard Wagner
+            </div>
+            <div class="programme-row" onclick="togglePanelists(this)">
+                <div class="programme-number">3.</div>
+                <div class="programme-main">
+                    <div class="programme-time">13:00-14:00</div>
+                    <div class="programme-title">Panel I: An <span class="programme-bracket">(IDR) </span> Odyssey </div>
+
+                    <div class="programme-desc">Exploring the New Horizons of Arbitration, Commercial Courts, and Settlements</div>
+                    <div class="programme-cta">View <span>↗</span></div>
+                </div>
+            </div>
+            <div class="programme-panelists">
+                <strong>Panellists:</strong><br>
+                Laura Castillo (2023)<br>
+                on – Environmental, Social and Governance (ESG) Disputes –<br><br>
+                Carolina Solis Villares (2024)<br>
+                on – International Arbitration for Cross-Border Succession Disputes –<br><br>
+                Kseniia Stepanova (2022)<br>
+                on – Role of Settlements in Commercial Arbitration –<br><br>
+                Falco Toet (2023)<br>
+                on – Commercial Courts: A Friend or a Threat to Arbitration? –<br><br>
+
+                <strong>Moderator:</strong><br>
+                Alicja Zielińska-Eisen (2016)
+            </div>
+            <div class="programme-row" onclick="togglePanelists(this)">
+                <div class="programme-number">4.</div>
+                <div class="programme-main">
+                    <div class="programme-time">15:00-16:00</div>
+                    <div class="programme-title"><span class="programme-bracket">(Panel II): </span>The Arbitrator's Gambit</span></div>
+
+                    <div class="programme-desc">Conditions Precedent, Conflicts of Interest, Investor Protection, and a Tour de Swiss</div>
+                    <div class="programme-cta">View <span>↗</span></div>
+                  </div>
+            </div>
+            <div class="programme-panelists">
+                <strong>Panellists:</strong><br>
+                Placeholder Name 1<br>
+                Placeholder Name 2<br>
+                <strong>Moderator:</strong><br>
+                Placeholder Moderator
+            </div>
+            <div class="programme-row" onclick="togglePanelists(this)">
+                <div class="programme-number">5.</div>
+                <div class="programme-main">
+                    <div class="programme-time">16:00-16:45</div>
+                    <div class="programme-title">Panel III: The <span class="programme-bracket">(INSIDER)</span></div>
+
+                    <div class="programme-desc">What It Means to Be a Successful International Lawyer, and Ways to Get There</div>
+                    <div class="programme-cta">View <span>↗</span></div>
+                  </div>
+            </div>
+            <div class="programme-panelists last-panelists">
+                <strong>Panellists:</strong><br>
+                Placeholder Name 1<br>
+                Placeholder Name 2<br>
+                <strong>Moderator:</strong><br>
+                Placeholder Moderator
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Venue Section -->
+    <section id="venue" class="section">
+        <div class="section-header">
+            <h2>Venue</h2>
+            <p>Join us at the historic Humboldt University in the heart of Berlin</p>
+        </div>
+        <div class="venue-info">
+            <div class="venue-details">
+                <h3>Location Details</h3>
+                <p><strong>Humboldt-Universität zu Berlin</strong></p>
+                <p>Law Faculty Building</p>
+                <p>Unter den Linden 9</p>
+                <p>Lecture Hall (Room) 213</p>
+                <p>10117 Berlin, Germany</p>
+
+                <h3 style="margin-top: 40px;">After Party!</h3>
+                <p><strong>Wednesday, 11 September 2025</strong></p>
+                <p>21:00 onwards</p>
+                <p>Mokka Mitte Bar</p>
+                <p>Stadtbahnbogen 159/160</p>
+                <p>10178 Berlin</p>
+            </div>
+            <div class="venue-map">
+                <!-- Map placeholder -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section class="sponsors-carousel-section">
+        <div class="sponsors-carousel">
+            <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
+            <div class="sponsor-logo-text">Allen & Overy</div>
+            <div class="sponsor-logo-text">Clifford Chance</div>
+            <div class="sponsor-logo-text">Linklaters</div>
+            <div class="sponsor-logo-text">White & Case</div>
+            <div class="sponsor-logo-text">Baker McKenzie</div>
+            <div class="sponsor-logo-text">Herbert Smith Freehills</div>
+            <div class="sponsor-logo-text">Hogan Lovells</div>
+            <div class="sponsor-logo-text">Latham & Watkins</div>
+            <div class="sponsor-logo-text">Skadden Arps</div>
+            <div class="sponsor-logo-text">Gibson Dunn</div>
+            <div class="sponsor-logo-text">Kirkland & Ellis</div>
+            <!-- Duplicate for seamless loop -->
+            <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
+            <div class="sponsor-logo-text">Allen & Overy</div>
+            <div class="sponsor-logo-text">Clifford Chance</div>
+            <div class="sponsor-logo-text">Linklaters</div>
+            <div class="sponsor-logo-text">White & Case</div>
+            <div class="sponsor-logo-text">Baker McKenzie</div>
+            <div class="sponsor-logo-text">Herbert Smith Freehills</div>
+            <div class="sponsor-logo-text">Hogan Lovells</div>
+            <div class="sponsor-logo-text">Latham & Watkins</div>
+            <div class="sponsor-logo-text">Skadden Arps</div>
+            <div class="sponsor-logo-text">Gibson Dunn</div>
+            <div class="sponsor-logo-text">Kirkland & Ellis</div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="section">
+        <div class="registration">
+            <h2>Register Now</h2>
+            <p>Places are limited. Secure your spot today.</p>
+            <div class="deadline">
+                <strong>Registration Deadline</strong>
+                Wednesday, 3 September 2025
+            </div>
+            <div>
+                <a href="#" class="pill-btn">Register <span>↗</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer-banner">HDRC 2025</div>
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: info@hdrc-berlin.de</p>
+                <p>Phone: +49 30 1234 5678</p>
+                <p>Humboldt-Universität zu Berlin</p>
+            </div>
+            <div class="footer-section">
+                <h4>Organized By</h4>
+                <p>Humboldt International</p>
+                <p>Dispute Resolution Association e.V.</p>
+                <p>IDR LL.M. Programme</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links</h4>
+                <p><a href="#">IDR LL.M. Programme</a></p>
+                <p><a href="#">Berlin Dispute Resolution Days</a></p>
+                <p><a href="#">Previous Conferences</a></p>
+            </div>
+        </footer>
+    </div>
+    <script>
+    function togglePanelists(rowDiv) {
+        const panel = rowDiv.nextElementSibling;
+        const isOpen = panel.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.programme-panelists').forEach(function(p) {
+            p.classList.remove('open');
+        });
+        document.querySelectorAll('.programme-row').forEach(function(row) {
+            row.classList.remove('active');
+        });
+        // Toggle this one
+        if (!isOpen) {
+            rowDiv.classList.add('active');
+            panel.classList.add('open');
+        }
+    }
+    // Mark last panelists for divider logic
+    document.addEventListener('DOMContentLoaded', function() {
+        var panels = document.querySelectorAll('.programme-panelists');
+        if (panels.length) {
+            panels.forEach(function(p) { p.classList.remove('last-panelists'); });
+            panels[panels.length-1].classList.add('last-panelists');
+        }
+        // Animated border-radius on scroll for hero/about
+        var aboutSection = document.querySelector('.section-about');
+        var heroSection = document.querySelector('.hero');
+        var programmeSection = document.querySelector('#programme');
+        function animateSectionBorders() {
+            var scrollY = window.scrollY || window.pageYOffset;
+            var aboutRect = aboutSection.getBoundingClientRect();
+            var heroRect = heroSection.getBoundingClientRect();
+            var programmeRect = programmeSection.getBoundingClientRect();
+            // Animate About section's top corners only when scrolling from About to Programme
+            if (aboutRect.bottom <= 0) {
+                aboutSection.classList.add('rounded');
+            } else {
+                aboutSection.classList.remove('rounded');
+            }
+            // Optionally, keep hero's rounded logic if you want, or remove if not needed
+        }
+        window.addEventListener('scroll', animateSectionBorders);
+        animateSectionBorders();
+    });
+
+    function toggleNavMenu() {
+        var navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('open');
+    }
+    </script>
+</body>
+</html>
