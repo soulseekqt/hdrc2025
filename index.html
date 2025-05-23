@@ -118,19 +118,60 @@
         }
 
         .nav-register-btn {
-            background: #000;
-            color: #fff;
+            background: #fff;
+
             padding: 8px 16px;
-            border-radius: 50px;
+            border-radius: 20px; /* Initial pill shape */
             text-decoration: none;
             font-size: 16px;
             font-weight: 400;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; /* Smooth transition for all changes */
+            /* box-shadow: 6px 6px 0 #000; */
+            overflow: hidden; /* Hide overflowing text for scrolling */
+            white-space: nowrap; /* Prevent text wrapping */
+            display: flex; /* Use flexbox to center text */
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
+            width: 100px; /* Estimated initial width */
+            height: 40px; /* Estimated initial height */
+            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
+
+        }
+
+        .nav-register-btn .single-text {
+             display: inline-block; /* Show single text by default */
+             line-height: 1;
+        }
+
+        .nav-register-btn .scrolling-text {
+             display: none; /* Hide scrolling text by default */
+             line-height: 1;
         }
 
         .nav-register-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+            transform: none; /* Remove translateY on hover */
+            border-radius: 50%; /* Adjusted for a more elliptical shape */
+            background: #F9F9F9; /* Keep background color as per latest change */
+            color: #999;
+
+        }
+
+        .nav-register-btn:hover .single-text {
+            display: none; /* Hide single text on hover */
+            color: #999;
+
+        }
+
+        .nav-register-btn:hover .scrolling-text {
+            display: inline-block; /* Show scrolling text on hover */
+            animation: scroll-text 1.7s linear infinite; /* Increased duration for smoother loop */
+            color: #999;
+        }
+
+        /* Text scrolling animation */
+        @keyframes scroll-text {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-20%); /* Scroll by the width of one 'Register ' block */ }
         }
 
         /* Pill Button Style */
@@ -140,29 +181,52 @@
             gap: 2px;
             background: #fff;
             color: #1a1a1a;
-            padding: 8px 16px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 20px; /* Original pill shape */
             text-decoration: none;
             font-size: 16px;
             font-weight: 400;
+            width: 100px; /* Estimated initial width */
+            height: 40px; /* Estimated initial height */
             transition: all 0.3s ease;
+            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
+            overflow: hidden; /* Needed for scrolling text */
+            white-space: nowrap; /* Needed for scrolling text */
         }
 
-        .pill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+         .pill-btn .single-text {
+             display: inline-block;
+             line-height: 1;
+         }
+
+         .pill-btn .scrolling-text {
+             display: none;
+             line-height: 1;
+         }
+
+         .pill-btn:hover {
+            transform: none; /* Remove translateY on hover */
+            border-radius: 50%; /* Adjusted for a more elliptical shape */
+            background: #F9F9F9; /* Keep background color as per latest change */
+
         }
 
-        .pill-btn.secondary {
-            background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .pill-btn:hover .single-text {
+            display: none;
         }
 
-        .pill-btn.secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
+        .pill-btn:hover .scrolling-text {
+            display: inline-block;
+            animation: scroll-text 1.7s linear infinite; /* Apply animation */
         }
+
+        /* Text scrolling animation */
+        @keyframes scroll-text {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-20%); /* Scroll by the width of one 'Register ' block */ }
+        }
+
+
 
         /* Hero Section */
         .hero {
@@ -180,7 +244,7 @@
             background-repeat: no-repeat;
             border-bottom-left-radius: 0px;
             border-bottom-right-radius: 0px;
-            transition: border-radius 0.4s cubic-bezier(0.4,0,0.2,1);
+
         }
 
         .hero-left {
@@ -1044,7 +1108,10 @@
                 <li><a href="#sponsors">Sponsors</a></li>
             </ul>
             <div class="nav-right">
-                <a href="#register" class="nav-register-btn">Register </a>
+                <a href="#register" class="nav-register-btn">
+                    <span class="single-text">Register </span>
+                    <span class="scrolling-text">Register  Register  Register  Register  Register  Register  Register  Register  Register  Register</span>
+                </a>
             </div>
         </nav>
 
@@ -1060,10 +1127,11 @@
                 and<br>
                 International Arbitration</h2>
                 <a href="#register" class="pill-btn">
-                    Register
+                    <span class="single-text">Register</span>
+                    <span class="scrolling-text">Register  Register  Register  Register  Register  Register  Register  Register  Register  Register</span>
                 </a>
             </div>
-            <div class="badge">Limited Seats!</div>
+            <div class="badge">LIMITED SEATS</div>
         </section>
 
         <!-- About Section -->
@@ -1288,7 +1356,10 @@
                     </div>
                 </div>
                 <div>
-                  <a href="mailto:alumni.humboldt.idr@gmail.com?subject=HDRC%202025%20Registration" class="pill-btn">Register </a>
+                  <a href="mailto:alumni.humboldt.idr@gmail.com?subject=HDRC%202025%20Registration" class="pill-btn">
+                      <span class="single-text">Register </span>
+                      <span class="scrolling-text">Register  Register  Register  Register  Register  Register  Register  Register  Register  Register</span>
+                  </a>
                 </div>
             </div>
         </section>
