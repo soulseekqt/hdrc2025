@@ -988,16 +988,13 @@
                 top: 60px; /* Adjusted based on nav height */
                 left: 0;
                 right: 0;
-                background: rgba(26, 26, 26, 0.9); /* Increased opacity slightly for better blur contrast */
+                background: rgba(26, 26, 26, 0.275); /* Reverted background opacity */
                 backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px); /* Add for wider browser support */
                 flex-direction: column;
                 gap: 0;
                 padding: 0;
                 z-index: 1001;
                 box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-                height: calc(100vh - 60px); /* Set height to viewport height minus nav height */
-                overflow-y: auto; /* Enable scrolling for long menus */
             }
             .nav-links.open {
                 display: flex !important;
@@ -1005,7 +1002,8 @@
             .nav-links li {
                 border-bottom: 1px solid #333;
                 text-align: left;
-                padding: 18px 18px;
+                padding: 10px 10px;
+
             }
             .nav-toggle {
                 display: block !important;
