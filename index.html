@@ -297,8 +297,8 @@
             border-radius: 0 0 0 0;
             padding-left: 40px;
             padding-right: 40px;
-            transition: box-shadow 0.4s, border-radius 0.4s, top 0.4s;
-            margin-bottom: 120px;
+            /* transition: box-shadow 0.4s, border-radius 0.4s, top 0.4s; */
+            margin-bottom: 0px;
         }
         .section-about .section-header h2,
         .section-about .section-header p {
@@ -424,6 +424,51 @@
         }
 
         /* Programme Section */
+        .section#programme {
+            position: relative;
+            width: 100%; /* Use 100% instead of 100vw */
+            padding: 0; /* Remove padding from the section */
+            max-width: none; /* Override max-width from .section */
+            margin: 0; /* Override margin from .section */
+            overflow: hidden; /* Hide background overflow */
+            min-height: 100vh; /* Ensure it fills at least the viewport height */
+        }
+
+        /* New wrapper for content */
+        .programme-content-wrapper {
+            max-width: 800px; /* Limit content width */
+            margin: 0 auto; /* Center content */
+            padding: 40px; /* Add both vertical and horizontal padding to the wrapper */
+            position: relative; /* Needed to keep content above background */
+            z-index: 2; /* Ensure content is above the blurred background */
+        }
+
+        .section#programme::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/programme-background.png'); /* Add background image here */
+            background-size: cover; /* Make it cover the section */
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(5px); /* Apply blur here */
+            -webkit-filter: blur(10px); /* Add for wider browser support */
+            z-index: 0; /* Position behind content */
+            /* Add a dark overlay on the pseudo-element */
+            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark overlay */
+            background-blend-mode: darken; /* Blend the overlay with the image */
+            width: 100%;
+            height: 100%;
+        }
+
+        .section#programme .section-header h2,
+        .section#programme .section-header p {
+            color: #E4DE52; /* Post-it note yellow */
+        }
+
         .programme-grid {
             display: flex;
             flex-direction: column;
@@ -439,7 +484,7 @@
             width: 100%;
             cursor: pointer;
             padding: 20px 0 20px 0;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #E4DE52; /* Post-it note yellow */
             background: #ffffff00;
             transition: background 0.2s;
             position: relative;
@@ -451,7 +496,7 @@
             font-size: 48px;
             font-family: 'Alte Haas Grotesk', serif;
             font-weight: 700;
-            color: #ffffff;
+            color: #E4DE52; /* Post-it note yellow */
             line-height: 1;
             min-width: 60px;
             letter-spacing: -2px;
@@ -465,7 +510,7 @@
         }
         .programme-time {
             font-size: 20px;
-            color: #ffffff;
+            color: #E4DE52; /* Post-it note yellow */
             font-weight: 300;
             letter-spacing: -0.7px;
             margin-bottom: 10px;
@@ -474,7 +519,7 @@
         .programme-title {
             font-size: 30px;
             font-weight: bold;
-            color: #ffffff;
+            color: #E4DE52; /* Post-it note yellow */
             line-height: 1.1;
             margin-bottom: 10px;
             font-family: 'Alte Haas Grotesk', Arial, sans-serif;
@@ -488,13 +533,13 @@
         }
         .programme-desc {
             font-size: 24px;
-            color: #ffffff;
+            color: #E4DE52; /* Post-it note yellow */
             font-weight: 300;
             letter-spacing: -0.9px;
             margin-top: 0.2em;
         }
         .programme-cta {
-            color: #9a9a9a;
+            color: #E4DE52; /* Post-it note yellow */
             opacity: 0.6;
             font-size: 18px;
             font-family: 'Alte Haas Grotesk', Arial, sans-serif;
@@ -517,13 +562,13 @@
             max-height: 0;
             opacity: 0;
             background: #f7f7f700;
-            color: #ffffff;
+            color: #E4DE52; /* Post-it note yellow */
             font-size: 24px;
             font-weight: 300;
             letter-spacing: -0.7px;
             padding: 0 10px;
             border-radius: 0 0 12px 12px;
-            border-top: 2px solid #7a626200;
+            border-top: 0px solid #E4DE52; /* Post-it note yellow */
             margin: 0;
             transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
             grid-column: 1 / -1;
@@ -538,45 +583,8 @@
         .programme-panelists.open::after {
             content: '';
             display: block;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #E4DE52; /* Post-it note yellow */
             margin: 32px -48px 0 -48px;
-        }
-
-        /* Speakers Section */
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
-        }
-
-        .speaker-card {
-            text-align: center;
-        }
-
-        .speaker-avatar {
-            width: 120px;
-            height: 120px;
-            background: #333;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-        }
-
-        .speaker-name {
-            font-size: 20px;
-            font-weight: 300;
-            margin-bottom: 5px;
-            letter-spacing: -0.5px;
-        }
-
-        .speaker-role {
-            color: #999;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .speaker-company {
-            color: #666;
-            font-size: 14px;
         }
 
         /* Venue Section */
@@ -1094,86 +1102,88 @@
 
         <!-- Programme Section -->
         <section id="programme" class="section">
-            <div class="section-header">
-                <h2>Programme</h2>
-                <p>A carefully curated day of insights and discussions</p>
-            </div>
-            <div class="programme-grid">
-                <div class="programme-row" onclick="togglePanelists(this)">
-                    <div class="programme-number">1.</div>
-                    <div class="programme-main">
-                        <div class="programme-time">12:30-12:40</div>
-                        <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
-                        <div class="programme-cta" style="display:none;"></div>
-                        <div class="programme-desc">Opening remarks and introduction to the day's events</div>
+            <div class="programme-content-wrapper">
+                <div class="section-header">
+                    <h2>Programme</h2>
+                    <p>A carefully curated day of insights and discussions</p>
+                </div>
+                <div class="programme-grid">
+                    <div class="programme-row" onclick="togglePanelists(this)">
+                        <div class="programme-number">1.</div>
+                        <div class="programme-main">
+                            <div class="programme-time">12:30-12:40</div>
+                            <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
+                            <div class="programme-cta" style="display:none;"></div>
+                            <div class="programme-desc">Opening remarks and introduction to the day's events</div>
+                        </div>
                     </div>
-                </div>
-                <div class="programme-row" onclick="togglePanelists(this)">
-                    <div class="programme-number">2.</div>
-                    <div class="programme-main">
-                        <div class="programme-time">12:40-13:00</div>
-                        <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
-                        <div class="programme-desc">Setting the stage for innovative dispute resolution discussions</div>
-                        <div class="programme-cta">(View) </div>
-                      </div>
-                </div>
-                <div class="programme-panelists">
-                    <strong>Keynote:</strong><br>
-                    Prof. Gerhard Wagner
-                </div>
-                <div class="programme-row" onclick="togglePanelists(this)">
-                    <div class="programme-number">3.</div>
-                    <div class="programme-main">
-                        <div class="programme-time">13:00-14:00</div>
-                        <div class="programme-title">Panel I: An <span class="programme-bracket">(IDR) </span> Odyssey </div>
-                        <div class="programme-desc">Exploring the New Horizons of Arbitration, Commercial Courts, and Settlements</div>
-                        <div class="programme-cta">(View)</div>
+                    <div class="programme-row" onclick="togglePanelists(this)">
+                        <div class="programme-number">2.</div>
+                        <div class="programme-main">
+                            <div class="programme-time">12:40-13:00</div>
+                            <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
+                            <div class="programme-desc">Setting the stage for innovative dispute resolution discussions</div>
+                            <div class="programme-cta">(View) </div>
+                          </div>
                     </div>
-                </div>
-                <div class="programme-panelists">
-                    <strong>Panellists:</strong><br>
-                    Laura Castillo (2023) on Environmental, Social and Governance (ESG) Disputes<br>
-                    Carolina Solis Villares (2024)
-                    on International Arbitration for Cross-Border Succession Disputes <br>
-                    Kseniia Stepanova (2022)
-                    on Role of Settlements in Commercial Arbitration<br>
-                    Falco Toet (2023)
-                    on Commercial Courts: A Friend or a Threat to Arbitration? <br>
+                    <div class="programme-panelists">
+                        <strong>Keynote:</strong><br>
+                        Prof. Gerhard Wagner
+                    </div>
+                    <div class="programme-row" onclick="togglePanelists(this)">
+                        <div class="programme-number">3.</div>
+                        <div class="programme-main">
+                            <div class="programme-time">13:00-14:00</div>
+                            <div class="programme-title">Panel I: An <span class="programme-bracket">(IDR) </span> Odyssey </div>
+                            <div class="programme-desc">Exploring the New Horizons of Arbitration, Commercial Courts, and Settlements</div>
+                            <div class="programme-cta">(View)</div>
+                        </div>
+                    </div>
+                    <div class="programme-panelists">
+                        <strong>Panellists:</strong><br>
+                        Laura Castillo (2023) on Environmental, Social and Governance (ESG) Disputes<br>
+                        Carolina Solis Villares (2024)
+                        on International Arbitration for Cross-Border Succession Disputes <br>
+                        Kseniia Stepanova (2022)
+                        on Role of Settlements in Commercial Arbitration<br>
+                        Falco Toet (2023)
+                        on Commercial Courts: A Friend or a Threat to Arbitration? <br>
 
-                    <strong>Moderator:</strong><br>
-                    Alicja Zielińska-Eisen (2016)
-                </div>
-                <div class="programme-row" onclick="togglePanelists(this)">
-                    <div class="programme-number">4.</div>
-                    <div class="programme-main">
-                        <div class="programme-time">15:00-16:00</div>
-                        <div class="programme-title"><span class="programme-bracket">(Panel II): </span>The Arbitrator's Gambit</span></div>
-                        <div class="programme-desc">Conditions Precedent, Conflicts of Interest, Investor Protection, and a Tour de Swiss</div>
-                        <div class="programme-cta">(View)</div>
-                      </div>
-                </div>
-                <div class="programme-panelists">
-                    <strong>Panellists:</strong><br>
-                    Placeholder Name 1<br>
-                    Placeholder Name 2<br>
-                    <strong>Moderator:</strong><br>
-                    Placeholder Moderator
-                </div>
-                <div class="programme-row" onclick="togglePanelists(this)">
-                    <div class="programme-number">5.</div>
-                    <div class="programme-main">
-                        <div class="programme-time">16:00-16:45</div>
-                        <div class="programme-title">Panel III: The <span class="programme-bracket">(INSIDER)</span></div>
-                        <div class="programme-desc">What It Means to Be a Successful International Lawyer, and Ways to Get There</div>
-                        <div class="programme-cta">(View)</div>
-                      </div>
-                </div>
-                <div class="programme-panelists last-panelists">
-                    <strong>Panellists:</strong><br>
-                    Placeholder Name 1<br>
-                    Placeholder Name 2<br>
-                    <strong>Moderator:</strong><br>
-                    Placeholder Moderator
+                        <strong>Moderator:</strong><br>
+                        Alicja Zielińska-Eisen (2016)
+                    </div>
+                    <div class="programme-row" onclick="togglePanelists(this)">
+                        <div class="programme-number">4.</div>
+                        <div class="programme-main">
+                            <div class="programme-time">15:00-16:00</div>
+                            <div class="programme-title"><span class="programme-bracket">(Panel II): </span>The Arbitrator's Gambit</span></div>
+                            <div class="programme-desc">Conditions Precedent, Conflicts of Interest, Investor Protection, and a Tour de Swiss</div>
+                            <div class="programme-cta">(View)</div>
+                          </div>
+                    </div>
+                    <div class="programme-panelists">
+                        <strong>Panellists:</strong><br>
+                        Placeholder Name 1<br>
+                        Placeholder Name 2<br>
+                        <strong>Moderator:</strong><br>
+                        Placeholder Moderator
+                    </div>
+                    <div class="programme-row" onclick="togglePanelists(this)">
+                        <div class="programme-number">5.</div>
+                        <div class="programme-main">
+                            <div class="programme-time">16:00-16:45</div>
+                            <div class="programme-title">Panel III: The <span class="programme-bracket">(INSIDER)</span></div>
+                            <div class="programme-desc">What It Means to Be a Successful International Lawyer, and Ways to Get There</div>
+                            <div class="programme-cta">(View)</div>
+                          </div>
+                    </div>
+                    <div class="programme-panelists last-panelists">
+                        <strong>Panellists:</strong><br>
+                        Placeholder Name 1<br>
+                        Placeholder Name 2<br>
+                        <strong>Moderator:</strong><br>
+                        Placeholder Moderator
+                    </div>
                 </div>
             </div>
         </section>
