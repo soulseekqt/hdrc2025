@@ -38,7 +38,16 @@
           color: #fff;
           background: #1a1a1a;
           overflow-x: hidden;
-          width: 100%; /* Ensure body doesn't overflow */
+          width: 100%;
+        }
+
+        /* Main content wrapper - CRITICAL for sticky footer */
+        .main-content {
+          position: relative;
+          z-index: 10;
+          background: #1a1a1a;
+          /* This ensures the content can scroll over the footer */
+          min-height: 100vh;
         }
 
         /* Navigation */
@@ -363,8 +372,6 @@
             background: #ffffff00;
             border-radius: 0;
             overflow: hidden;
-            /* border-top: 1px solid #222; */
-            /* border-bottom: 1px solid #22222200; */
         }
         .programme-row {
             display: grid;
@@ -473,47 +480,6 @@
             border-bottom: 1px solid #222;
             margin: 32px -48px 0 -48px;
         }
-        @media (max-width: 900px) {
-            .programme-row { grid-template-columns: 48px 1fr; padding: 24px 0 16px 0; }
-            .programme-title { font-size: 18px; }
-            .programme-desc { font-size: 14px; }
-            .programme-number { font-size: 24px; min-width: 32px; }
-            .programme-time { font-size: 14px; }
-            .programme-bracket { font-size: 12px; }
-            .programme-panelists, .programme-panelists.open { font-size: 14px; padding: 10px 8px; }
-            .programme-cta { font-size: 12px; }
-            .hero {
-                flex-direction: column;
-                justify-content: flex-start;
-                text-align: center;
-                padding: 0 10px;
-                height: auto;
-            }
-            .hero-left h1 {
-                font-size: 32px;
-            }
-            .hero-logo {
-                width: 60vw;
-                max-width: 95vw;
-                margin: 64px auto 24px auto;
-                display: block;
-            }
-            .hero-right {
-                text-align: center;
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }
-            .badge {
-                display: none;
-            }
-            .section-about {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-            .about-text {
-                padding-left: 0;
-            }
-        }
 
         /* Speakers Section */
         .speakers-grid {
@@ -562,7 +528,7 @@
 
         .venue-details h3 {
             font-size: 24px;
-            font-weight: 300;
+            font-style: normal;
             margin-bottom: 30px;
             letter-spacing: -0.5px;
         }
@@ -571,6 +537,7 @@
             color: #ccc;
             margin-bottom: 10px;
             font-weight: 300;
+
         }
 
         .venue-map {
@@ -580,7 +547,6 @@
         }
 
         /* Sponsors Section */
-        /* Sponsors Carousel Section CSS */
         .sponsors-carousel-section {
             width: 100vw;
             position: relative;
@@ -624,45 +590,14 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .sponsors-carousel { gap: 40px; }
-            .sponsor-logo-text { font-size: 20px; }
-        }
-        /* Footer with rounded corners */
-        .footer-wrapper {
-            background: #f5f5f5;
-
-            margin: 20px 0 0 0;
-            overflow: hidden;
-
-        }
-
-        .footer-banner {
-            width: 100vw;
-            left: 50%;
-            transform: translateX(-50%);
-            position: relative;
-            background: #1a1a1a;
-            color: #f5f5f5;
-            text-align: center;
-            font-size: 13vw;
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            line-height: 1;
-            margin-bottom: -48px;
-            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
-            z-index: 2;
-            user-select: none;
-        }
-
-
         /* Registration Section */
         .registration {
             text-align: center;
             background: #222;
             padding: 100px 40px;
             border-radius: 8px;
+
+            /* Add significant margin to create space for sticky footer reveal */
         }
 
         .registration h2 {
@@ -673,7 +608,7 @@
         }
 
         .registration p {
-            color: #999;
+
             font-size: 18px;
             margin-bottom: 40px;
             font-weight: 300;
@@ -684,7 +619,7 @@
             padding: 20px 40px;
             border-radius: 4px;
             display: inline-block;
-            margin-bottom: 40px;
+            margin-bottom: 100px;
         }
 
         .deadline strong {
@@ -693,15 +628,59 @@
             margin-bottom: 5px;
         }
 
-        /* Footer */
-        .footer {
-            padding: 150px 60px;
-            display: grid;
+        /* STICKY FOOTER - Completely Fixed Implementation */
+        .sticky-footer {
+            position: sticky;
+            bottom: 0;
+            z-index: 0;
+            width: 100%;
+            height: 320px;
+            background: #f5f5f5;
+            overflow: hidden;
+            /* Ensure it actually sticks */
+            top: calc(100vh - 320px);
+            margin-top: 10vh; /* Full viewport height to ensure sticky works */
+        }
 
+        .footer-banner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #f5f5f5; /* Match the footer background */
+            color: #1a1a1a; /* Black text on white background */
+            text-align: center;
+            font-size: 13vw;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
+            user-select: none;
+            padding: 20px 0;
+            /* Show 75% of the text */
+            transform: translateY(25%);
+            transition: transform 0.3s ease;
+        }
+
+        /* Reveal more on scroll/hover */
+        .sticky-footer:hover .footer-banner,
+        .sticky-footer.revealed .footer-banner {
+            transform: translateY(10%);
+        }
+
+        .footer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 60px;
+            display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 150px;
+            gap: 50px;
             color: #1a1a1a;
             justify-items: start;
+            height: 100%;
+            align-content: start;
         }
 
         .footer-section h4 {
@@ -713,8 +692,6 @@
 
         .footer-section {
             text-align: left;
-            padding-left: 32px;
-            padding-right: 32px;
         }
 
         .footer-section p,
@@ -731,6 +708,77 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .programme-row { grid-template-columns: 48px 1fr; padding: 24px 0 16px 0; }
+            .programme-title { font-size: 18px; }
+            .programme-desc { font-size: 14px; }
+            .programme-number { font-size: 24px; min-width: 32px; }
+            .programme-time { font-size: 14px; }
+            .programme-bracket { font-size: 12px; }
+            .programme-panelists, .programme-panelists.open { font-size: 14px; padding: 10px 8px; }
+            .programme-cta { font-size: 12px; }
+            .hero {
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: center;
+                padding: 0 10px;
+                height: auto;
+            }
+            .hero-left h1 {
+                font-size: 32px;
+            }
+            .hero-logo {
+                width: 60vw;
+                max-width: 95vw;
+                margin: 64px auto 24px auto;
+                display: block;
+            }
+            .hero-right {
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            .badge {
+                display: none;
+            }
+            .section-about {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .about-text {
+                padding-left: 0;
+            }
+
+            /* Mobile footer adjustments */
+            .footer-banner {
+                font-size: 19vw;
+                transform: translateY(25%); /* Show 75% on mobile too */
+            }
+
+            .sticky-footer:hover .footer-banner,
+            .sticky-footer.revealed .footer-banner {
+                transform: translateY(10%);
+            }
+
+            .sticky-footer {
+                height: 420px; /* Smaller on mobile */
+                top: calc(100vh - 250px);
+            }
+
+            .footer {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+                justify-items: start;
+            }
+
+            .footer-section {
+                padding: 0;
+                text-align: left;
+                width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav {
                 padding: 20px;
@@ -787,27 +835,15 @@
             .venue-details, .venue-map {
                 margin-bottom: 32px;
             }
-            .footer-wrapper {
-                margin: 40px 8px 8px;
-                border-radius: 12px;
-            }
-            .footer {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px;
-                justify-items: start;
-            }
-            .speakers-grid,
-            .sponsor-tiers {
+            .speakers-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
         }
 
         @media (max-width: 900px) {
-            /* Ensure no horizontal overflow for the entire page */
             html, body {
-                overflow-x: hidden !important; /* Use !important to strongly enforce */
+                overflow-x: hidden !important;
             }
             .nav {
                 padding: 20px 16px;
@@ -844,378 +880,265 @@
             .nav-right {
                 display: none;
             }
-            .hero {
-                flex-direction: column;
-                justify-content: flex-start;
-                text-align: center;
-                padding: 0 10px;
-                height: auto;
-            }
-            .hero-left h1 {
-                font-size: 32px;
-            }
-            .hero-logo {
-                width: 60vw;
-                max-width: 95vw;
-                margin: 64px auto 24px auto;
-                display: block;
-            }
-            .hero-right {
-                text-align: center;
-                margin-top: 40px;
-                margin-bottom: 40px;
-            }
-            .badge {
-                display: none;
-            }
-            .section {
-                padding: 40px 8px;
-            }
-            .about-content {
-                display: block;
-                gap: 0;
-            }
-            .about-text {
-                margin-bottom: 32px;
-                max-width: 100%;
-            }
-            .about-stats {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 24px;
-                justify-content: center;
-            }
-            .stat {
-                border-left: none;
-                border-top: 1px solid #333;
-                padding-left: 0;
-                padding-top: 16px;
-                min-width: 120px;
-                flex: 1 1 40%;
-                text-align: center;
-            }
-            .venue-info {
-                display: block;
-                gap: 0;
-            }
-            .venue-details, .venue-map {
-                margin-bottom: 32px;
-            }
-            .speakers-grid,
-            .sponsor-tiers {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            /* Simplified Mobile Footer Styles */
-            .footer-banner {
-                font-size: 19vw;
-                margin-bottom: -24px; /* Keep existing margin */
-                width: 100%;
-                border-radius: 0;
-                margin-left: 0; /* Ensure no side margin */
-                margin-right: 0; /* Ensure no side margin */
-                padding-left: 0; /* Ensure no side padding */
-                padding-right: 0; /* Ensure no side padding */
-                text-align: center;
-                left: auto; /* Remove any fixed positioning */
-                right: auto; /* Remove any fixed positioning */
-                transform: none; /* Remove any transform */
-            }
-            .footer-wrapper {
-                width: 100%;
-                border-radius: 0;
-                margin-top: 40px; /* Keep top margin as before */
-                margin-bottom: 0; /* Ensure no bottom margin */
-                margin-left: 0; /* Ensure no side margin */
-                margin-right: 0; /* Ensure no side margin */
-                padding-left: 0; /* Ensure no side padding */
-                padding-right: 0; /* Ensure no side padding */
-                background: #fff; /* Ensure white background */
-                overflow: hidden; /* Prevent internal overflow */
-                left: auto; /* Remove any fixed positioning */
-                right: auto; /* Remove any fixed positioning */
-                transform: none; /* Remove any transform */
-            }
-            .footer-wrapper .footer {
-                width: 100%;
-                border-radius: 0;
-                background: #fff; /* Ensure white background */
-                padding: 20px 8px; /* Apply internal padding */
-                gap: 20px; /* Keep existing gap */
-                grid-template-columns: 1fr; /* Single column layout */
-                justify-items: start; /* Left align grid items */
-                left: auto; /* Remove any fixed positioning */
-                right: auto; /* Remove any fixed positioning */
-                transform: none; /* Remove any transform */
-            }
-            .footer-section {
-                padding: 0;
-                text-align: left;
-                width: 100%;
-            }
+            .sponsors-carousel { gap: 40px; }
+            .sponsor-logo-text { font-size: 20px; }
         }
     </style>
 </head>
 <body id="top">
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-logo">HDRC 2025</div>
-        <button class="nav-toggle" aria-label="Open navigation" onclick="toggleNavMenu()">☰</button>
-        <ul class="nav-links">
-            <li><a href="#register">Register</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#programme">Programme</a></li>
-            <li><a href="#speakers">Speakers</a></li>
-            <li><a href="#venue">Venue</a></li>
-            <li><a href="#sponsors">Sponsors</a></li>
-        </ul>
-        <div class="nav-right">
-            <a href="#register" class="nav-register-btn">Register </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-left">
-            <img src="images/HU.svg" alt="Humboldt University Logo" class="hero-logo" />
-            <!-- <p class="subtitle">Proud partner of the Berlin Dispute Resolution Days</p> -->
-            <h1>Humboldt<br>Dispute Resolution<br>Conference 2025</h1>
-            <p class="subtitle" style="margin-top: 20px;">Monday, 8 September 2025</p>
-        </div>
-        <div class="hero-right">
-            <h2>The Rule of Law<br>
-            and<br>
-            International Arbitration</h2>
-            <a href="#register" class="pill-btn">
-                Register
-            </a>
-        </div>
-        <div class="badge">LIMITED SEATS</div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section section-about">
-        <div class="section-header">
-            <h2>About the Conference</h2>
-            <p>Where Berlin's spirit of freedom meets the cutting edge of international dispute resolution</p>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-              <h3>The Fourth Annual HDRC</h3>
-              <p>On behalf of Professor Dr. Gerhard Wagner, Academic Director of the International Dispute Resolution (IDR) LL.M., and ten generations of IDR LL.M. Alumni, we are delighted to invite you to the fourth annual Humboldt Dispute Resolution Conference.</p>
-              <p>This year, the HDRC turns its focus to the Rule of Law in international arbitration—at a time when it faces unprecedented challenges. From the rise of artificial intelligence and climate litigation to fractured supply chains and shifting geopolitical power, the conference explores whether the Rule of Law can hold steady amidst global disruption.</p>
-
+    <!-- Main content wrapper -->
+    <div class="main-content">
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-logo">HDRC 2025</div>
+            <button class="nav-toggle" aria-label="Open navigation" onclick="toggleNavMenu()">☰</button>
+            <ul class="nav-links">
+                <li><a href="#register">Register</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programme">Programme</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#venue">Venue</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#register" class="nav-register-btn">Register </a>
             </div>
-            <div class="about-stats">
-                <div class="stat">
-                    <div class="stat-number">10th</div>
-                    <div class="stat-label">Anniversary</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Alumni</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">4th</div>
-                    <div class="stat-label">Annual Conference</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Panels</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Programme Section -->
-    <section id="programme" class="section">
-        <div class="section-header">
-            <h2>Programme</h2>
-            <p>A carefully curated day of insights and discussions</p>
-        </div>
-        <div class="programme-grid">
-            <div class="programme-row" onclick="togglePanelists(this)">
-                <div class="programme-number">1.</div>
-                <div class="programme-main">
-                    <div class="programme-time">12:30-12:40</div>
-                    <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
-                    <div class="programme-cta" style="display:none;"></div>
-                    <div class="programme-desc">Opening remarks and introduction to the day's events</div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-left">
+                <img src="images/HU.svg" alt="Humboldt University Logo" class="hero-logo" />
+                <h1>Humboldt<br>Dispute Resolution<br>Conference 2025</h1>
+                <p class="subtitle" style="margin-top: 20px;">Monday, 8 September 2025</p>
+            </div>
+            <div class="hero-right">
+                <h2>The Rule of Law<br>
+                and<br>
+                International Arbitration</h2>
+                <a href="#register" class="pill-btn">
+                    Register
+                </a>
+            </div>
+            <div class="badge">LIMITED SEATS</div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section section-about">
+            <div class="section-header">
+                <h2>About the Conference</h2>
+                <p>Where Berlin's spirit of freedom meets the cutting edge of international dispute resolution</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                  <h3>The Fourth Annual HDRC</h3>
+                  <p>On behalf of Professor Dr. Gerhard Wagner, Academic Director of the International Dispute Resolution (IDR) LL.M., and ten generations of IDR LL.M. Alumni, we are delighted to invite you to the fourth annual Humboldt Dispute Resolution Conference.</p>
+                  <p>This year, the HDRC turns its focus to the Rule of Law in international arbitration—at a time when it faces unprecedented challenges. From the rise of artificial intelligence and climate litigation to fractured supply chains and shifting geopolitical power, the conference explores whether the Rule of Law can hold steady amidst global disruption.</p>
+
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">10th</div>
+                        <div class="stat-label">Anniversary</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Alumni</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4th</div>
+                        <div class="stat-label">Annual Conference</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Panels</div>
+                    </div>
                 </div>
             </div>
-            <div class="programme-row" onclick="togglePanelists(this)">
-                <div class="programme-number">2.</div>
-                <div class="programme-main">
-                    <div class="programme-time">12:40-13:00</div>
-                    <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
+        </section>
 
-                    <div class="programme-desc">Setting the stage for innovative dispute resolution discussions</div>
-                    <div class="programme-cta">View </div>
-                  </div>
+        <!-- Programme Section -->
+        <section id="programme" class="section">
+            <div class="section-header">
+                <h2>Programme</h2>
+                <p>A carefully curated day of insights and discussions</p>
             </div>
-            <div class="programme-panelists">
-                <strong>Keynote:</strong><br>
-                Prof. Gerhard Wagner
-            </div>
-            <div class="programme-row" onclick="togglePanelists(this)">
-                <div class="programme-number">3.</div>
-                <div class="programme-main">
-                    <div class="programme-time">13:00-14:00</div>
-                    <div class="programme-title">Panel I: An <span class="programme-bracket">(IDR) </span> Odyssey </div>
+            <div class="programme-grid">
+                <div class="programme-row" onclick="togglePanelists(this)">
+                    <div class="programme-number">1.</div>
+                    <div class="programme-main">
+                        <div class="programme-time">12:30-12:40</div>
+                        <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
+                        <div class="programme-cta" style="display:none;"></div>
+                        <div class="programme-desc">Opening remarks and introduction to the day's events</div>
+                    </div>
+                </div>
+                <div class="programme-row" onclick="togglePanelists(this)">
+                    <div class="programme-number">2.</div>
+                    <div class="programme-main">
+                        <div class="programme-time">12:40-13:00</div>
+                        <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
+                        <div class="programme-desc">Setting the stage for innovative dispute resolution discussions</div>
+                        <div class="programme-cta">View </div>
+                      </div>
+                </div>
+                <div class="programme-panelists">
+                    <strong>Keynote:</strong><br>
+                    Prof. Gerhard Wagner
+                </div>
+                <div class="programme-row" onclick="togglePanelists(this)">
+                    <div class="programme-number">3.</div>
+                    <div class="programme-main">
+                        <div class="programme-time">13:00-14:00</div>
+                        <div class="programme-title">Panel I: An <span class="programme-bracket">(IDR) </span> Odyssey </div>
+                        <div class="programme-desc">Exploring the New Horizons of Arbitration, Commercial Courts, and Settlements</div>
+                        <div class="programme-cta">View </div>
+                    </div>
+                </div>
+                <div class="programme-panelists">
+                    <strong>Panellists:</strong><br>
+                    Laura Castillo (2023)<br>
+                    on – Environmental, Social and Governance (ESG) Disputes –<br><br>
+                    Carolina Solis Villares (2024)<br>
+                    on – International Arbitration for Cross-Border Succession Disputes –<br><br>
+                    Kseniia Stepanova (2022)<br>
+                    on – Role of Settlements in Commercial Arbitration –<br><br>
+                    Falco Toet (2023)<br>
+                    on – Commercial Courts: A Friend or a Threat to Arbitration? –<br><br>
 
-                    <div class="programme-desc">Exploring the New Horizons of Arbitration, Commercial Courts, and Settlements</div>
-                    <div class="programme-cta">View </div>
+                    <strong>Moderator:</strong><br>
+                    Alicja Zielińska-Eisen (2016)
+                </div>
+                <div class="programme-row" onclick="togglePanelists(this)">
+                    <div class="programme-number">4.</div>
+                    <div class="programme-main">
+                        <div class="programme-time">15:00-16:00</div>
+                        <div class="programme-title"><span class="programme-bracket">(Panel II): </span>The Arbitrator's Gambit</span></div>
+                        <div class="programme-desc">Conditions Precedent, Conflicts of Interest, Investor Protection, and a Tour de Swiss</div>
+                        <div class="programme-cta">View </div>
+                      </div>
+                </div>
+                <div class="programme-panelists">
+                    <strong>Panellists:</strong><br>
+                    Placeholder Name 1<br>
+                    Placeholder Name 2<br>
+                    <strong>Moderator:</strong><br>
+                    Placeholder Moderator
+                </div>
+                <div class="programme-row" onclick="togglePanelists(this)">
+                    <div class="programme-number">5.</div>
+                    <div class="programme-main">
+                        <div class="programme-time">16:00-16:45</div>
+                        <div class="programme-title">Panel III: The <span class="programme-bracket">(INSIDER)</span></div>
+                        <div class="programme-desc">What It Means to Be a Successful International Lawyer, and Ways to Get There</div>
+                        <div class="programme-cta">View </div>
+                      </div>
+                </div>
+                <div class="programme-panelists last-panelists">
+                    <strong>Panellists:</strong><br>
+                    Placeholder Name 1<br>
+                    Placeholder Name 2<br>
+                    <strong>Moderator:</strong><br>
+                    Placeholder Moderator
                 </div>
             </div>
-            <div class="programme-panelists">
-                <strong>Panellists:</strong><br>
-                Laura Castillo (2023)<br>
-                on – Environmental, Social and Governance (ESG) Disputes –<br><br>
-                Carolina Solis Villares (2024)<br>
-                on – International Arbitration for Cross-Border Succession Disputes –<br><br>
-                Kseniia Stepanova (2022)<br>
-                on – Role of Settlements in Commercial Arbitration –<br><br>
-                Falco Toet (2023)<br>
-                on – Commercial Courts: A Friend or a Threat to Arbitration? –<br><br>
+        </section>
 
-                <strong>Moderator:</strong><br>
-                Alicja Zielińska-Eisen (2016)
+        <!-- Venue Section -->
+        <section id="venue" class="section">
+            <div class="section-header">
+                <h2>(Venue)</h2>
+                <p>Join us at the historic Humboldt University in the heart of Berlin</p>
             </div>
-            <div class="programme-row" onclick="togglePanelists(this)">
-                <div class="programme-number">4.</div>
-                <div class="programme-main">
-                    <div class="programme-time">15:00-16:00</div>
-                    <div class="programme-title"><span class="programme-bracket">(Panel II): </span>The Arbitrator's Gambit</span></div>
+            <div class="venue-info">
+                <div class="venue-details">
+                    <h3>Location <span class="programme-bracket">(Details)</span></h3>
+                    <p><strong>Humboldt-Universität zu Berlin</strong></p>
+                    <p>Law Faculty Building</p>
+                    <p>Unter den Linden 9</p>
+                    <p>Lecture Hall (Room) 213</p>
+                    <p>10117 Berlin, Germany</p>
 
-                    <div class="programme-desc">Conditions Precedent, Conflicts of Interest, Investor Protection, and a Tour de Swiss</div>
-                    <div class="programme-cta">View </div>
-                  </div>
+                    <h3 style="margin-top: 40px;">After <span class="programme-bracket">(Party!)</span></h3>
+                    <p><strong>Wednesday, 11 September 2025</strong></p>
+                    <p>21:00 onwards</p>
+                    <p>Mokka Mitte Bar</p>
+                    <p>Stadtbahnbogen 159/160</p>
+                    <p>10178 Berlin</p>
+                </div>
+                <div class="venue-map">
+                    <!-- Map placeholder -->
+                </div>
             </div>
-            <div class="programme-panelists">
-                <strong>Panellists:</strong><br>
-                Placeholder Name 1<br>
-                Placeholder Name 2<br>
-                <strong>Moderator:</strong><br>
-                Placeholder Moderator
-            </div>
-            <div class="programme-row" onclick="togglePanelists(this)">
-                <div class="programme-number">5.</div>
-                <div class="programme-main">
-                    <div class="programme-time">16:00-16:45</div>
-                    <div class="programme-title">Panel III: The <span class="programme-bracket">(INSIDER)</span></div>
+        </section>
 
-                    <div class="programme-desc">What It Means to Be a Successful International Lawyer, and Ways to Get There</div>
-                    <div class="programme-cta">View </div>
-                  </div>
+        <!-- Sponsors Section -->
+        <section class="sponsors-carousel-section">
+            <div class="sponsors-carousel">
+                <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
+                <div class="sponsor-logo-text">Allen & Overy</div>
+                <div class="sponsor-logo-text">Clifford Chance</div>
+                <div class="sponsor-logo-text">Linklaters</div>
+                <div class="sponsor-logo-text">White & Case</div>
+                <div class="sponsor-logo-text">Baker McKenzie</div>
+                <div class="sponsor-logo-text">Herbert Smith Freehills</div>
+                <div class="sponsor-logo-text">Hogan Lovells</div>
+                <div class="sponsor-logo-text">Latham & Watkins</div>
+                <div class="sponsor-logo-text">Skadden Arps</div>
+                <div class="sponsor-logo-text">Gibson Dunn</div>
+                <div class="sponsor-logo-text">Kirkland & Ellis</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
+                <div class="sponsor-logo-text">Allen & Overy</div>
+                <div class="sponsor-logo-text">Clifford Chance</div>
+                <div class="sponsor-logo-text">Linklaters</div>
+                <div class="sponsor-logo-text">White & Case</div>
+                <div class="sponsor-logo-text">Baker McKenzie</div>
+                <div class="sponsor-logo-text">Herbert Smith Freehills</div>
+                <div class="sponsor-logo-text">Hogan Lovells</div>
+                <div class="sponsor-logo-text">Latham & Watkins</div>
+                <div class="sponsor-logo-text">Skadden Arps</div>
+                <div class="sponsor-logo-text">Gibson Dunn</div>
+                <div class="sponsor-logo-text">Kirkland & Ellis</div>
             </div>
-            <div class="programme-panelists last-panelists">
-                <strong>Panellists:</strong><br>
-                Placeholder Name 1<br>
-                Placeholder Name 2<br>
-                <strong>Moderator:</strong><br>
-                Placeholder Moderator
+        </section>
+
+        <!-- Registration Section -->
+        <section id="register" class="section">
+            <div class="registration">
+                <h2>Register <span class="programme-bracket">(Now)</span></h2>
+                <p>Places are <span class="programme-bracket">(limited)</span>. Secure your spot today.</p>
+                <div class="deadline">
+                    <strong>Registration Deadline</strong>
+                    Wednesday, 3 September 2025
+                </div>
+                <div>
+                    <a href="#" class="pill-btn">Register </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-
-    <!-- Venue Section -->
-    <section id="venue" class="section">
-        <div class="section-header">
-            <h2>Venue</h2>
-            <p>Join us at the historic Humboldt University in the heart of Berlin</p>
-        </div>
-        <div class="venue-info">
-            <div class="venue-details">
-                <h3>Location Details</h3>
-                <p><strong>Humboldt-Universität zu Berlin</strong></p>
-                <p>Law Faculty Building</p>
-                <p>Unter den Linden 9</p>
-                <p>Lecture Hall (Room) 213</p>
-                <p>10117 Berlin, Germany</p>
-
-                <h3 style="margin-top: 40px;">After Party!</h3>
-                <p><strong>Wednesday, 11 September 2025</strong></p>
-                <p>21:00 onwards</p>
-                <p>Mokka Mitte Bar</p>
-                <p>Stadtbahnbogen 159/160</p>
-                <p>10178 Berlin</p>
-            </div>
-            <div class="venue-map">
-                <!-- Map placeholder -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Sponsors Section -->
-    <section class="sponsors-carousel-section">
-        <div class="sponsors-carousel">
-            <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
-            <div class="sponsor-logo-text">Allen & Overy</div>
-            <div class="sponsor-logo-text">Clifford Chance</div>
-            <div class="sponsor-logo-text">Linklaters</div>
-            <div class="sponsor-logo-text">White & Case</div>
-            <div class="sponsor-logo-text">Baker McKenzie</div>
-            <div class="sponsor-logo-text">Herbert Smith Freehills</div>
-            <div class="sponsor-logo-text">Hogan Lovells</div>
-            <div class="sponsor-logo-text">Latham & Watkins</div>
-            <div class="sponsor-logo-text">Skadden Arps</div>
-            <div class="sponsor-logo-text">Gibson Dunn</div>
-            <div class="sponsor-logo-text">Kirkland & Ellis</div>
-            <!-- Duplicate for seamless loop -->
-            <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
-            <div class="sponsor-logo-text">Allen & Overy</div>
-            <div class="sponsor-logo-text">Clifford Chance</div>
-            <div class="sponsor-logo-text">Linklaters</div>
-            <div class="sponsor-logo-text">White & Case</div>
-            <div class="sponsor-logo-text">Baker McKenzie</div>
-            <div class="sponsor-logo-text">Herbert Smith Freehills</div>
-            <div class="sponsor-logo-text">Hogan Lovells</div>
-            <div class="sponsor-logo-text">Latham & Watkins</div>
-            <div class="sponsor-logo-text">Skadden Arps</div>
-            <div class="sponsor-logo-text">Gibson Dunn</div>
-            <div class="sponsor-logo-text">Kirkland & Ellis</div>
-        </div>
-    </section>
-
-    <!-- Registration Section -->
-    <section id="register" class="section">
-        <div class="registration">
-            <h2>Register Now</h2>
-            <p>Places are limited. Secure your spot today.</p>
-            <div class="deadline">
-                <strong>Registration Deadline</strong>
-                Wednesday, 3 September 2025
-            </div>
-            <div>
-                <a href="#" class="pill-btn">Register </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <div class="footer-banner">HDRC 2025</div>
-    <div class="footer-wrapper">
+    <!-- Sticky Footer -->
+    <div class="sticky-footer">
+        <div class="footer-banner">HDRC 2025</div>
         <footer class="footer">
             <div class="footer-section">
                 <h4>Contact the Organizers</h4>
                 <p>E: alumni.humboldt.idr@gmail.com</p>
-
-
             </div>
             <div class="footer-section">
                 <h4>Organized By</h4>
                 <p>Humboldt International Dispute Resolution Association e.V.</p>
-
             </div>
             <div class="footer-section">
                 <h4>Links</h4>
                 <p><a href="https://www.rewi.hu-berlin.de/en/sp/angebote/master/idr">IDR LL.M. Programme</a></p>
                 <p><a href="https://www.berlin-dispute-resolution-days.de/">Berlin Dispute Resolution Days</a></p>
-
             </div>
         </footer>
     </div>
+
     <script>
     function togglePanelists(rowDiv) {
         const panel = rowDiv.nextElementSibling;
@@ -1233,6 +1156,7 @@
             panel.classList.add('open');
         }
     }
+
     // Mark last panelists for divider logic
     document.addEventListener('DOMContentLoaded', function() {
         var panels = document.querySelectorAll('.programme-panelists');
@@ -1240,23 +1164,39 @@
             panels.forEach(function(p) { p.classList.remove('last-panelists'); });
             panels[panels.length-1].classList.add('last-panelists');
         }
+
         // Animated border-radius on scroll for hero/about
         var aboutSection = document.querySelector('.section-about');
         var heroSection = document.querySelector('.hero');
         var programmeSection = document.querySelector('#programme');
+        var stickyFooter = document.querySelector('.sticky-footer');
+
         function animateSectionBorders() {
             var scrollY = window.scrollY || window.pageYOffset;
             var aboutRect = aboutSection.getBoundingClientRect();
             var heroRect = heroSection.getBoundingClientRect();
             var programmeRect = programmeSection.getBoundingClientRect();
+
             // Animate About section's top corners only when scrolling from About to Programme
             if (aboutRect.bottom <= 0) {
                 aboutSection.classList.add('rounded');
             } else {
                 aboutSection.classList.remove('rounded');
             }
-            // Optionally, keep hero's rounded logic if you want, or remove if not needed
+
+            // Check if we're near the bottom to reveal footer banner more
+            var windowHeight = window.innerHeight;
+            var documentHeight = document.documentElement.scrollHeight;
+            var scrollBottom = scrollY + windowHeight;
+            var threshold = documentHeight - 300; // 300px from bottom
+
+            if (scrollBottom >= threshold) {
+                stickyFooter.classList.add('revealed');
+            } else {
+                stickyFooter.classList.remove('revealed');
+            }
         }
+
         window.addEventListener('scroll', animateSectionBorders);
         animateSectionBorders();
     });
