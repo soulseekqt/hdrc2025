@@ -246,13 +246,20 @@
             position: absolute;
             bottom: 40px;
             right: 40px;
-            background: #000000;
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            background: #FEF49C; /* Post-it yellow background */
+            color: #000; /* Black text */
+            padding: 8px 16px; /* Keep original padding */
+            border-radius: 0px; /* Sharp corners like post-it */
+            font-size: 12px; /* Keep original font size */
+            /* font-weight: 500; Remove or set to normal if needed */
+            /* letter-spacing: 0.5px; Remove if needed */
+            transform: rotate(-5deg); /* Rotate like post-it */
+            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
+            display: block; /* Ensure it's treated as a block for sizing/shadow */
+            /* margin: 0 auto 40px auto; Not needed for absolute position */
+            /* max-width: 300px; Not needed, keep original size */
+            border: 2px solid #000; /* Post-it border */
+            text-align: center; /* Center text inside the badge */
         }
 
         /* Content Sections */
@@ -978,16 +985,19 @@
             .nav-links {
                 display: none !important;
                 position: absolute;
-                top: 60px;
+                top: 60px; /* Adjusted based on nav height */
                 left: 0;
                 right: 0;
-                background: rgba(26, 26, 26, 0.275);
+                background: rgba(26, 26, 26, 0.9); /* Increased opacity slightly for better blur contrast */
                 backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px); /* Add for wider browser support */
                 flex-direction: column;
                 gap: 0;
                 padding: 0;
                 z-index: 1001;
                 box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+                height: calc(100vh - 60px); /* Set height to viewport height minus nav height */
+                overflow-y: auto; /* Enable scrolling for long menus */
             }
             .nav-links.open {
                 display: flex !important;
@@ -1047,7 +1057,7 @@
                     Register
                 </a>
             </div>
-            <div class="badge">LIMITED SEATS</div>
+            <div class="badge">Limited Seats!</div>
         </section>
 
         <!-- About Section -->
@@ -1174,7 +1184,7 @@
         <section id="venue" class="section">
             <div class="section-header">
                 <h2>(Venue)</h2>
-                <p>Join us at the historic Humboldt University in the heart of Berlin</p>
+                <p>Join us at the historic Humboldt University, in the heart of Berlin</p>
             </div>
             <div class="venue-info">
                 <div class="venue-details">
