@@ -365,6 +365,57 @@
             border-bottom-right-radius: 40px;
         }
 
+        /* Sponsors Section */
+        .section-sponsors-wrapper {
+            position: relative;
+            background: #fff;
+            color: #111;
+            width: 100vw;
+            max-width: none;
+            margin: 0;
+            border-radius: 0;
+            padding-left: 40px;
+            padding-right: 40px;
+            transition: box-shadow 0.4s, border-radius 0.4s, top 0.4s;
+            margin-bottom: 0;
+        }
+
+        .section-sponsors-wrapper .section-header h2,
+        .section-sponsors-wrapper .section-header p {
+            color: #000;
+        }
+
+        .sponsors-text-box {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-radius: 00px;
+            max-width: 300px;
+            margin: 0 auto 40px auto;
+            background: #FEF49C;
+            border: 2px solid #000;
+            transform: rotate(-5deg);
+            box-shadow: 6px 6px 0 #000;
+            /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); */
+        }
+
+        .sponsors-text-box h3 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+            color: #000;
+            text-align: center;
+        }
+
+        .sponsors-text-box p {
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-weight: 300;
+            text-align: center;
+        }
+
         /* Programme Section */
         .programme-grid {
             display: flex;
@@ -555,17 +606,17 @@
             position: relative;
             left: 50%;
             transform: translateX(-50%);
-            background: #f5f5f5;
-            border-top: 1px solid #e0e0e0;
-            border-bottom: 1px solid #e0e0e0;
-            padding: 20px 0;
-            margin: 60px 0;
+            background: #fff;
+            border-top: 0px solid #000000;
+            border-bottom: 0px solid #000000;
+            padding: 10px 0;
+            margin: 50px 0;
             overflow: hidden;
         }
 
         .sponsors-carousel {
             display: flex;
-            animation: scroll-sponsors 15s linear infinite;
+            animation: scroll-sponsors 20s linear infinite;
             gap: 80px;
             align-items: center;
             white-space: nowrap;
@@ -596,11 +647,9 @@
         /* Registration Section */
         .registration {
             text-align: center;
-            background: #222;
-            padding: 100px 40px;
-            border-radius: 8px;
-
-            /* Add significant margin to create space for sticky footer reveal */
+            background: transparent;
+            padding: 30px 20px;
+            border-radius: 20px;
         }
 
         .registration h2 {
@@ -611,18 +660,93 @@
         }
 
         .registration p {
-
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-weight: 300;
         }
 
+        /* Chat Dialog Box Styling */
+        .chat-dialog-box {
+            background-color: #fff; /* White background for the dialog box */
+            border: 0px solid #ccc; /* Light grey border */
+            border-radius: 20px; /* Slightly rounded corners */
+            padding: 20px; /* Padding inside the dialog box */
+            max-width: 500px; /* Match the max-width of the imessage-container */
+            margin: 40px auto 40px auto; /* Center and add space above and below */
+            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
+        }
+
+        /* iMessage Styling */
+        .imessage-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between messages */
+            max-width: 600px; /* Limit container width */
+            margin: 0 auto 40px auto; /* Center container and add bottom margin */
+        }
+
+        .imessage-container .from-them, .imessage-container .from-me {
+            max-width: 80%; /* Limit bubble width */
+            padding: 10px 15px; /* Padding inside bubbles */
+            border-radius: 5px; /* Rounded corners */
+            line-height: 1.4; /* Improve readability */
+            font-size: 16px;
+            font-weight: normal; /* Set font to normal */
+            position: relative; /* Needed for pseudo-elements positioning */
+        }
+
+        .imessage-container .from-them {
+            background-color: #E5E5EA; /* Light grey */
+            color: #000; /* Black text */
+            align-self: flex-start; /* Align to the left */
+            /* Removed border-bottom-left-radius: 5px; handled by pseudo-element */
+        }
+
+        .imessage-container .from-them::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -7px; /* Position the tail */
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid #E5E5EA; /* Tail color matching bubble */
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
+        .imessage-container .from-me {
+            background-color: #0B93F6; /* iMessage blue */
+            color: #fff; /* White text */
+            align-self: flex-end; /* Align to the right */
+            /* Removed border-bottom-right-radius: 5px; handled by pseudo-element */
+        }
+
+        .imessage-container .from-me::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -7px; /* Position the tail */
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid #0B93F6; /* Tail color matching bubble */
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+
         .deadline {
-            background: #333333;
-            padding: 10px 20px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 100px;
+            /* Post-it Note Styling */
+            display: flex;
+            flex-direction: column;
+            padding: 20px; /* Reduced padding */
+            border-radius: 00px; /* Sharp corners */
+            max-width: 300px; /* Set a smaller max-width */
+            margin: 0 auto 40px auto; /* Center horizontally and add bottom margin */
+            background: #FEF49C; /* Post-it yellow */
+            border: 2px solid #000; /* Black border */
+            transform: rotate(-5deg); /* Rotate the box */
+            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
+            text-align: center; /* Center text */
+            color: #000; /* Make text black */
         }
 
         .deadline strong {
@@ -849,7 +973,7 @@
                 overflow-x: hidden !important;
             }
             .nav {
-                padding: 5px 22px;
+                padding: 6px 22px;
             }
             .nav-links {
                 display: none !important;
@@ -1082,50 +1206,68 @@
             </div>
         </section>
 
-        <section id="venue" class="section">
-        <div class="section-header">
-          <h2>Sponsors</h2>
-        </section>
         <!-- Sponsors Section -->
-        <section class="sponsors-carousel-section">
-
-            <div class="sponsors-carousel">
-                <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
-                <div class="sponsor-logo-text">Allen & Overy</div>
-                <div class="sponsor-logo-text">Clifford Chance</div>
-                <div class="sponsor-logo-text">Linklaters</div>
-                <div class="sponsor-logo-text">White & Case</div>
-                <div class="sponsor-logo-text">Baker McKenzie</div>
-                <div class="sponsor-logo-text">Herbert Smith Freehills</div>
-                <div class="sponsor-logo-text">Hogan Lovells</div>
-                <div class="sponsor-logo-text">Latham & Watkins</div>
-                <div class="sponsor-logo-text">Skadden Arps</div>
-                <div class="sponsor-logo-text">Gibson Dunn</div>
-                <div class="sponsor-logo-text">Kirkland & Ellis</div>
-                <!-- Duplicate for seamless loop -->
-                <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
-                <div class="sponsor-logo-text">Allen & Overy</div>
-                <div class="sponsor-logo-text">Clifford Chance</div>
-                <div class="sponsor-logo-text">Linklaters</div>
-                <div class="sponsor-logo-text">White & Case</div>
-                <div class="sponsor-logo-text">Baker McKenzie</div>
-                <div class="sponsor-logo-text">Herbert Smith Freehills</div>
-                <div class="sponsor-logo-text">Hogan Lovells</div>
-                <div class="sponsor-logo-text">Latham & Watkins</div>
-                <div class="sponsor-logo-text">Skadden Arps</div>
-                <div class="sponsor-logo-text">Gibson Dunn</div>
-                <div class="sponsor-logo-text">Kirkland & Ellis</div>
+        <section class="section section-sponsors-wrapper">
+            <div class="section-header">
+                <h2>Sponsors</h2>
+                <!-- <p>Join our distinguished sponsors supporting the future of international dispute resolution</p> -->
             </div>
+            <div class="sponsors-text-box">
+                <h3>Interested to Support HDRC 2025?</h3>
+                <p>Sponsorship opportunities are open. E-mail us for more!</p>
+            </div>
+            <section class="sponsors-carousel-section">
+                <div class="sponsors-carousel">
+                    <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
+                    <div class="sponsor-logo-text">Allen & Overy</div>
+                    <div class="sponsor-logo-text">Clifford Chance</div>
+                    <div class="sponsor-logo-text">Linklaters</div>
+                    <div class="sponsor-logo-text">White & Case</div>
+                    <div class="sponsor-logo-text">Baker McKenzie</div>
+                    <div class="sponsor-logo-text">Herbert Smith Freehills</div>
+                    <div class="sponsor-logo-text">Hogan Lovells</div>
+                    <div class="sponsor-logo-text">Latham & Watkins</div>
+                    <div class="sponsor-logo-text">Skadden Arps</div>
+                    <div class="sponsor-logo-text">Gibson Dunn</div>
+                    <div class="sponsor-logo-text">Kirkland & Ellis</div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="sponsor-logo-text">Freshfields Bruckhaus Deringer</div>
+                    <div class="sponsor-logo-text">Allen & Overy</div>
+                    <div class="sponsor-logo-text">Clifford Chance</div>
+                    <div class="sponsor-logo-text">Linklaters</div>
+                    <div class="sponsor-logo-text">White & Case</div>
+                    <div class="sponsor-logo-text">Baker McKenzie</div>
+                    <div class="sponsor-logo-text">Herbert Smith Freehills</div>
+                    <div class="sponsor-logo-text">Hogan Lovells</div>
+                    <div class="sponsor-logo-text">Latham & Watkins</div>
+                    <div class="sponsor-logo-text">Skadden Arps</div>
+                    <div class="sponsor-logo-text">Gibson Dunn</div>
+                    <div class="sponsor-logo-text">Kirkland & Ellis</div>
+                </div>
+            </section>
         </section>
 
         <!-- Registration Section -->
         <section id="register" class="section">
             <div class="registration">
                 <h2>Register <span class="programme-bracket">(Now)</span></h2>
-                <p>Places are <span class="programme-bracket">(limited)</span>. Secure your spot today.</p>
-                <div class="deadline">
-                    <strong>Registration Deadline</strong>
-                    Wednesday, 3 September 2025
+                <p>Places are limited. Secure your spot today!</p>
+                <div class="chat-dialog-box">
+                    <div class="imessage-container">
+                        <div class="from-them">
+                            Did u hear about HDRC 2025 this year? 💅
+                        </div>
+                        <div class="from-me">
+                            I heard it was gonna be great! 👀 But places were limited?
+                        </div>
+                        <div class="from-them">
+                          Yeah! Registration deadline is Wednesday, 3 September 2025.
+                        </div>
+                        <div class="from-me">
+                          Yay! ❤️
+
+                      </div>
+                    </div>
                 </div>
                 <div>
                   <a href="mailto:alumni.humboldt.idr@gmail.com?subject=HDRC%202025%20Registration" class="pill-btn">Register </a>
