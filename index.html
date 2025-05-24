@@ -58,7 +58,7 @@
             right: 0;
             z-index: 1000;
             padding: 11px 40px;
-            background: rgba(26, 26, 26, 0.275);
+            /* background: rgba(125, 120, 120, 0.275); */
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
@@ -82,8 +82,9 @@
         .nav-links a {
             color: #999;
             text-decoration: none;
+            font-style: bold;
             transition: color 0.3s ease;
-            font-weight: 400;
+
         }
 
         .nav-links a:hover {
@@ -188,7 +189,7 @@
             font-weight: 400;
             width: 100px; /* Estimated initial width */
             height: 40px; /* Estimated initial height */
-            transition: all 0.3s ease;
+            transition: all 0s ease;
             box-shadow: 6px 6px 0 #000; /* Post-it shadow */
             overflow: hidden; /* Needed for scrolling text */
             white-space: nowrap; /* Needed for scrolling text */
@@ -1083,6 +1084,11 @@
                 right: 16px;
                 top: 16px;
                 margin-left: 0;
+                transition: transform 0.3s ease;
+            }
+            .nav-toggle.open {
+                transform: rotate(180deg);
+                content: 'X'; /* Change the content to X */
             }
             .nav-right {
                 display: none;
@@ -1358,7 +1364,7 @@
                 <div>
                   <a href="mailto:alumni.humboldt.idr@gmail.com?subject=HDRC%202025%20Registration" class="pill-btn">
                       <span class="single-text">Register </span>
-                      <span class="scrolling-text">Register  Register  Register  Register  Register  Register  Register  Register  Register  Register</span>
+                      <span class="scrolling-text">Register  Register  Register  Register  Register  Register  Register  Register  Register  Register </span>
                   </a>
                 </div>
             </div>
@@ -1449,7 +1455,18 @@
 
     function toggleNavMenu() {
         var navLinks = document.querySelector('.nav-links');
+        var navToggleBtn = document.querySelector('.nav-toggle');
+        var isOpen = navLinks.classList.contains('open');
+
         navLinks.classList.toggle('open');
+        navToggleBtn.classList.toggle('open');
+
+        // Change button content
+        if (isOpen) {
+            navToggleBtn.innerHTML = '☰'; // Hamburger icon
+        } else {
+            navToggleBtn.innerHTML = 'x'; // Close icon
+        }
     }
     </script>
 </body>
