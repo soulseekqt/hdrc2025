@@ -327,6 +327,19 @@
             text-align: center; /* Center text inside the badge */
         }
 
+        /* Jiggle animation for the badge */
+        @keyframes jiggle {
+            0% { transform: rotate(-5deg) scale(1); }
+            25% { transform: rotate(2deg) scale(1.1); }
+            50% { transform: rotate(-2deg) scale(1.1); }
+            75% { transform: rotate(1deg) scale(1.05); }
+            100% { transform: rotate(-5deg) scale(1); }
+        }
+
+        .badge.jiggle {
+            animation: jiggle 0.5s ease-in-out;
+        }
+
         /* Content Sections */
         .section {
             padding: 40px 40px;
@@ -1097,6 +1110,11 @@
             .sponsors-carousel { gap: 40px; }
             .sponsor-logo-text { font-size: 20px; }
         }
+
+        .badge.jiggle,
+        .sponsors-text-box.jiggle {
+            animation: jiggle 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body id="top">
@@ -1469,6 +1487,51 @@
             navToggleBtn.innerHTML = 'x'; // Close icon
         }
     }
+
+    // About section 'Show More' functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const showMoreBtn = document.getElementById('about-show-more-btn');
+        const moreText = document.getElementById('about-more-text');
+
+        if (showMoreBtn && moreText) {
+            showMoreBtn.addEventListener('click', function() {
+                const isExpanded = moreText.classList.contains('expanded');
+                moreText.classList.toggle('expanded');
+
+                if (isExpanded) {
+                    showMoreBtn.querySelector('.single-text').innerText = 'Show More';
+                } else {
+                    showMoreBtn.querySelector('.single-text').innerText = 'Show Less';
+                }
+            });
+        }
+    });
+
+    // Badge jiggle on click
+    document.addEventListener('DOMContentLoaded', function() {
+        const badge = document.querySelector('.badge');
+        if (badge) {
+            badge.addEventListener('click', function() {
+                badge.classList.add('jiggle');
+                setTimeout(() => {
+                    badge.classList.remove('jiggle');
+                }, 500); // Match animation duration
+            });
+        }
+    });
+
+    // Sponsors text box jiggle on click
+    document.addEventListener('DOMContentLoaded', function() {
+        const sponsorsTextBox = document.querySelector('.sponsors-text-box');
+        if (sponsorsTextBox) {
+            sponsorsTextBox.addEventListener('click', function() {
+                sponsorsTextBox.classList.add('jiggle');
+                setTimeout(() => {
+                    sponsorsTextBox.classList.remove('jiggle');
+                }, 500); // Match animation duration
+            });
+        }
+    });
     </script>
 </body>
 </html>
