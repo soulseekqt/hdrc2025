@@ -676,6 +676,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: start;
+
         }
 
         .venue-details h3 {
@@ -865,6 +866,8 @@
             /* Ensure it actually sticks */
             top: calc(100vh - 320px);
             margin-top: 10vh; /* Full viewport height to ensure sticky works */
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
         }
 
         .footer-banner {
@@ -879,9 +882,8 @@
             font-weight: 900;
             letter-spacing: -0.05em;
             line-height: 1;
-            font-family: 'Alte Haas Grotesk', Arial, sans-serif;
             user-select: none;
-            padding: 20px 0;
+            padding: 10px 0;
             /* Show 75% of the text */
             transform: translateY(25%);
             transition: transform 0.3s ease;
