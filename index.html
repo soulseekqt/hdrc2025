@@ -108,7 +108,7 @@
         }
 
         .nav-right a {
-            color: #000000;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 400;
@@ -119,8 +119,8 @@
         }
 
         .nav-register-btn {
-            background: #fff;
-            color: #000;
+            background: transparent;
+            color: #fff;
             padding: 8px 16px;
             border-radius: 20px; /* Initial pill shape */
             text-decoration: none;
@@ -135,8 +135,8 @@
             justify-content: center; /* Center text horizontally */
             width: 100px; /* Estimated initial width */
             height: 40px; /* Estimated initial height */
-            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
-
+            /* box-shadow: 6px 6px 0 #000;  */
+            border: 2px solid #fff;
         }
 
         .nav-register-btn .single-text {
@@ -152,21 +152,19 @@
         .nav-register-btn:hover {
             transform: none; /* Remove translateY on hover */
             border-radius: 50%; /* Adjusted for a more elliptical shape */
-            background: #F9F9F9; /* Keep background color as per latest change */
-            color: #000000;
-
+            background: rgba(255, 255, 255, 0.1); /* Slight white overlay on hover */
+            color: #fff;
         }
 
         .nav-register-btn:hover .single-text {
             display: none; /* Hide single text on hover */
-            color: #000000;
-
+            color: #fff;
         }
 
         .nav-register-btn:hover .scrolling-text {
             display: inline-block; /* Show scrolling text on hover */
             animation: scroll-text 1.7s linear infinite; /* Increased duration for smoother loop */
-            color: #000000;
+            color: #fff;
         }
 
         /* Text scrolling animation */
@@ -180,8 +178,8 @@
             display: inline-flex;
             align-items: center;
             gap: 2px;
-            background: #fff;
-            color: #1a1a1a;
+            background: transparent;
+            color: #fff;
             padding: 10px 20px;
             border-radius: 20px; /* Original pill shape */
             text-decoration: none;
@@ -190,9 +188,10 @@
             width: 100px; /* Estimated initial width */
             height: 40px; /* Estimated initial height */
             transition: all 0s ease;
-            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
+            /* box-shadow: 6px 6px 0 #000; */
             overflow: hidden; /* Needed for scrolling text */
             white-space: nowrap; /* Needed for scrolling text */
+            border: 2px solid #fff;
         }
 
          .pill-btn .single-text {
@@ -208,18 +207,20 @@
          .pill-btn:hover {
             transform: none; /* Remove translateY on hover */
             border-radius: 50%; /* Adjusted for a more elliptical shape */
-            background: #F9F9F9; /* Keep background color as per latest change */
+            background: rgba(255, 255, 255, 0.1); /* Slight white overlay on hover */
+            color: #fff;
+         }
 
-        }
-
-        .pill-btn:hover .single-text {
+         .pill-btn:hover .single-text {
             display: none;
-        }
+            color: #fff;
+         }
 
-        .pill-btn:hover .scrolling-text {
+         .pill-btn:hover .scrolling-text {
             display: inline-block;
             animation: scroll-text 1.7s linear infinite; /* Apply animation */
-        }
+            color: #fff;
+         }
 
         /* Text scrolling animation */
         @keyframes scroll-text {
@@ -311,7 +312,7 @@
             position: absolute;
             bottom: 40px;
             right: 40px;
-            background: #FEF49C; /* Post-it yellow background */
+            background: #fff; /* Post-it yellow background */
             color: #000; /* Black text */
             padding: 8px 16px; /* Keep original padding */
             border-radius: 0px; /* Sharp corners like post-it */
@@ -482,7 +483,7 @@
             border-radius: 00px;
             max-width: 300px;
             margin: 0 auto 40px auto;
-            background: #FEF49C;
+            background: #fff;
             border: 2px solid #000;
             transform: rotate(-5deg);
             box-shadow: 6px 6px 0 #000;
