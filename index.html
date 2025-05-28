@@ -238,19 +238,41 @@
             justify-content: space-between;
             padding: 0 40px;
             position: relative;
-            background-color: #00000080;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('images/background.png');
-            background-blend-mode: darken;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            border-bottom-left-radius: 0px;
-            border-bottom-right-radius: 0px;
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+            transform: scale(1.1); /* Prevent blur edges from showing */
+            z-index: -1;
+        }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
         }
 
         .hero-left {
             max-width: 500px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-left h1 {
@@ -272,6 +294,8 @@
             text-align: right;
             margin-top: 80px;
             margin-bottom: -100px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-right h2 {
@@ -1182,7 +1206,7 @@
                 </div>
                 <div class="about-stats">
                     <div class="stat">
-                        <div class="stat-number">10th</div>
+                        <div class="stat-number">9th</div>
                         <div class="stat-label">Anniversary</div>
                     </div>
                     <div class="stat">
@@ -1205,89 +1229,68 @@
         <section id="programme" class="section">
             <div class="programme-content-wrapper">
                 <div class="section-header">
-                    <h2>Programme</h2>
-                    <p>A carefully curated day of insights and discussions</p>
-                </div>
-                <div class="programme-grid">
-                    <div class="programme-row" onclick="togglePanelists(this)">
-                        <div class="programme-number">1.</div>
-                        <div class="programme-main">
-                            <div class="programme-time">12:30-12:40</div>
-                            <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
-                            <div class="programme-cta" style="display:none;"></div>
-                            <div class="programme-desc">Opening remarks and introduction to the day's events</div>
-                        </div>
-                    </div>
-                    <div class="programme-row" onclick="togglePanelists(this)">
-                        <div class="programme-number">2.</div>
-                        <div class="programme-main">
-                            <div class="programme-time">12:40-13:00</div>
-                            <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
-                            <div class="programme-desc">Setting the stage for innovative dispute resolution discussions</div>
-                            <div class="programme-cta">(View) </div>
+                  <h2>Programme</h2>
+                  <p>A carefully curated day of insights and discussions</p>
+                  </div>
+                  <div class="programme-grid">
+                      <div class="programme-row" onclick="togglePanelists(this)">
+                          <div class="programme-number">1.</div>
+                          <div class="programme-main">
+                              <div class="programme-time">10:30-10:40</div>
+                              <div class="programme-title">Welcome by the <span class="programme-bracket">(ORGANISERS)</span></div>
+                              <div class="programme-cta" style="display:none;"></div>
+                              <div class="programme-desc">Opening remarks and introduction to the day's events</div>
                           </div>
-                    </div>
-                    <div class="programme-panelists">
-                        <strong>Keynote:</strong><br>
-                        Prof. Gerhard Wagner
-                    </div>
-                    <div class="programme-row" onclick="togglePanelists(this)">
-                        <div class="programme-number">3.</div>
-                        <div class="programme-main">
-                            <div class="programme-time">13:00-14:00</div>
-                            <div class="programme-title">Panel I: An <span class="programme-bracket">(IDR) </span> Odyssey </div>
-                            <div class="programme-desc">Exploring the New Horizons of Arbitration, Commercial Courts, and Settlements</div>
-                            <div class="programme-cta">(View)</div>
-                        </div>
-                    </div>
-                    <div class="programme-panelists">
-                        <strong>Panellists:</strong><br>
-                        Laura Castillo (2023) on Environmental, Social and Governance (ESG) Disputes<br>
-                        Carolina Solis Villares (2024)
-                        on International Arbitration for Cross-Border Succession Disputes <br>
-                        Kseniia Stepanova (2022)
-                        on Role of Settlements in Commercial Arbitration<br>
-                        Falco Toet (2023)
-                        on Commercial Courts: A Friend or a Threat to Arbitration? <br>
+                      </div>
+                      <div class="programme-row" onclick="togglePanelists(this)">
+                          <div class="programme-number">2.</div>
+                          <div class="programme-main">
+                              <div class="programme-time">10:40-11:15</div>
+                              <div class="programme-title"><span class="programme-bracket">(KEYNOTE)</span> Address</div>
+                              <div class="programme-desc">Setting the stage for our innovative dispute resolution panels</div>
+                              <div class="programme-cta">(View) </div>
+                            </div>
+                      </div>
+                      <div class="programme-panelists">
+                          <strong>Keynote:</strong><br>
+                          Prof. Gerhard Wagner
+                      </div>
+                      <div class="programme-row" onclick="togglePanelists(this)">
+                          <div class="programme-number">3.</div>
+                          <div class="programme-main">
+                              <div class="programme-time">11:15-12:45</div>
+                              <div class="programme-title">Panel I: <span class="programme-bracket">(TBA)</span></div>
+                              <div class="programme-desc">TBA</div>
+                              <div class="programme-cta">(View)</div>
+                          </div>
+                      </div>
+                      <div class="programme-panelists">
+                          <strong>Panellists:</strong><br>
+                          TBA<br>
 
-                        <strong>Moderator:</strong><br>
-                        Alicja Zielińska-Eisen (2016)
+
+                          <strong>Moderator:</strong><br>
+                          TBA
+                      </div>
+                      <div class="programme-row" onclick="togglePanelists(this)">
+                          <div class="programme-number">4.</div>
+                          <div class="programme-main">
+                              <div class="programme-time">13:30-15:00</div>
+                              <div class="programme-title"><span class="programme-bracket">(Panel II):</span> TBA</div>
+                              <div class="programme-desc">TBA</div>
+                              <div class="programme-cta">(View)</div>
+                            </div>
+                      </div>
+                      <div class="programme-panelists last-panelists">
+                          <strong>Panellists:</strong><br>
+                          TBA<br>
+
+                          <strong>Moderator:</strong><br>
+                          TBA
+                      </div>
                     </div>
-                    <div class="programme-row" onclick="togglePanelists(this)">
-                        <div class="programme-number">4.</div>
-                        <div class="programme-main">
-                            <div class="programme-time">15:00-16:00</div>
-                            <div class="programme-title"><span class="programme-bracket">(Panel II): </span>The Arbitrator's Gambit</span></div>
-                            <div class="programme-desc">Conditions Precedent, Conflicts of Interest, Investor Protection, and a Tour de Swiss</div>
-                            <div class="programme-cta">(View)</div>
-                          </div>
-                    </div>
-                    <div class="programme-panelists">
-                        <strong>Panellists:</strong><br>
-                        Placeholder Name 1<br>
-                        Placeholder Name 2<br>
-                        <strong>Moderator:</strong><br>
-                        Placeholder Moderator
-                    </div>
-                    <div class="programme-row" onclick="togglePanelists(this)">
-                        <div class="programme-number">5.</div>
-                        <div class="programme-main">
-                            <div class="programme-time">16:00-16:45</div>
-                            <div class="programme-title">Panel III: The <span class="programme-bracket">(INSIDER)</span></div>
-                            <div class="programme-desc">What It Means to Be a Successful International Lawyer, and Ways to Get There</div>
-                            <div class="programme-cta">(View)</div>
-                          </div>
-                    </div>
-                    <div class="programme-panelists last-panelists">
-                        <strong>Panellists:</strong><br>
-                        Placeholder Name 1<br>
-                        Placeholder Name 2<br>
-                        <strong>Moderator:</strong><br>
-                        Placeholder Moderator
-                    </div>
-                </div>
-            </div>
-        </section>
+                  </div>
+                  </div>
 
         <!-- Venue Section -->
         <section id="venue" class="section">
@@ -1305,11 +1308,9 @@
                     <p>10117 Berlin, Germany</p>
 
                     <h3 style="margin-top: 40px;">After <span class="programme-bracket">(Party!)</span></h3>
-                    <p><strong>Wednesday, 11 September 2025</strong></p>
-                    <p>21:00 onwards</p>
-                    <p>Mokka Mitte Bar</p>
-                    <p>Stadtbahnbogen 159/160</p>
-                    <p>10178 Berlin</p>
+                    <p><strong>TBA!</strong></p>
+
+
                 </div>
                 <div class="venue-map">
                   <iframe
