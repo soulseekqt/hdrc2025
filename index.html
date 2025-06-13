@@ -35,8 +35,8 @@
           font-family: 'Alte Haas Grotesk', sans-serif;
           font-weight: bold;
           line-height: 1.6;
-          color: #fff;
-          background: #1a1a1a;
+          color: #000;
+          background: #f9f9f9;
           overflow-x: hidden;
           width: 100%;
         }
@@ -50,7 +50,7 @@
         .main-content {
           position: relative;
           z-index: 10;
-          background: #1a1a1a;
+          background: #f9f9f9;
           /* This ensures the content can scroll over the footer */
           min-height: 100vh;
         }
@@ -63,19 +63,20 @@
             right: 0;
             z-index: 1000;
             padding: 10px 40px;
-            background: rgba(125, 120, 120, 0.5);
+            background: rgba(249, 249, 249, 0.9);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 16px;
+            border-bottom: 1.5px solid #000;
         }
 
         .nav-logo {
             font-style: bold;
             font-size: 30px;
             letter-spacing: -0.3px;
-            color: #ffffff;
+            color: #000;
         }
 
         .nav-links {
@@ -85,7 +86,7 @@
         }
 
         .nav-links a {
-            color: #ffffff;
+            color: #000;
             text-decoration: none;
             font-style: bold;
             transition: color 0.3s ease;
@@ -93,7 +94,7 @@
         }
 
         .nav-links a:hover {
-            color: #fff;
+            color: #333;
         }
 
         .nav-right {
@@ -113,19 +114,19 @@
         }
 
         .nav-right a {
-            color: #ffffff;
+            color: #000;
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 400;
         }
 
         .nav-right a:hover {
-            color: #fff;
+            color: #333;
         }
 
         .nav-register-btn {
             background: transparent;
-            color: #fff;
+            color: #000;
             padding: 8px 16px;
             border-radius: 20px; /* Initial pill shape */
             text-decoration: none;
@@ -141,7 +142,7 @@
             width: 100px; /* Estimated initial width */
             height: 40px; /* Estimated initial height */
             /* box-shadow: 6px 6px 0 #000;  */
-            border: 2px solid #fff;
+            border: 2px solid #000;
         }
 
         .nav-register-btn .single-text {
@@ -157,19 +158,19 @@
         .nav-register-btn:hover {
             transform: none; /* Remove translateY on hover */
             border-radius: 50%; /* Adjusted for a more elliptical shape */
-            background: rgba(255, 255, 255, 0.1); /* Slight white overlay on hover */
-            color: #fff;
+            background: rgba(0, 0, 0, 0.1); /* Slight white overlay on hover */
+            color: #000;
         }
 
         .nav-register-btn:hover .single-text {
             display: none; /* Hide single text on hover */
-            color: #fff;
+            color: #000;
         }
 
         .nav-register-btn:hover .scrolling-text {
             display: inline-block; /* Show scrolling text on hover */
             animation: scroll-text 1.7s linear infinite; /* Increased duration for smoother loop */
-            color: #fff;
+            color: #000;
         }
 
         /* Text scrolling animation */
@@ -184,7 +185,7 @@
             align-items: center;
             gap: 2px;
             background: transparent;
-            color: #fff;
+            color: #000;
             padding: 10px 20px;
             border-radius: 20px; /* Original pill shape */
             text-decoration: none;
@@ -196,7 +197,7 @@
             /* box-shadow: 6px 6px 0 #000; */
             overflow: hidden; /* Needed for scrolling text */
             white-space: nowrap; /* Needed for scrolling text */
-            border: 2px solid #fff;
+            border: 2px solid #000;
         }
 
          .pill-btn .single-text {
@@ -212,19 +213,19 @@
          .pill-btn:hover {
             transform: none; /* Remove translateY on hover */
             border-radius: 50%; /* Adjusted for a more elliptical shape */
-            background: rgba(255, 255, 255, 0.1); /* Slight white overlay on hover */
-            color: #fff;
+            background: rgba(0, 0, 0, 0.1); /* Slight white overlay on hover */
+            color: #000;
          }
 
          .pill-btn:hover .single-text {
             display: none;
-            color: #fff;
+            color: #000;
          }
 
          .pill-btn:hover .scrolling-text {
             display: inline-block;
             animation: scroll-text 1.7s linear infinite; /* Apply animation */
-            color: #fff;
+            color: #000;
          }
 
         /* Text scrolling animation */
@@ -244,33 +245,11 @@
             padding: 0 40px;
             position: relative;
             overflow: hidden;
+            background: #f9f9f9;
         }
 
         .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('images/background.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(8px);
-            -webkit-filter: blur(8px);
-            transform: scale(1.1); /* Prevent blur edges from showing */
-            z-index: -1;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
+            display: none;
         }
 
         .hero-left {
@@ -285,11 +264,12 @@
             line-height: 0.9;
             margin-bottom: 20px;
             letter-spacing: -2px;
+            color: #000;
         }
 
         .hero-left .subtitle {
             font-size: 16px;
-            color: #ffffff;
+            color: #000;
             margin-bottom: 10px;
             font-weight: 400;
         }
@@ -307,13 +287,14 @@
             font-style: normal;
             margin-bottom: 30px;
             letter-spacing: -1px;
+            color: #000;
         }
 
         .hero-right .cta {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            color: #fff;
+            color: #000;
             text-decoration: none;
             font-size: 16px;
             transition: all 0.3s ease;
@@ -385,7 +366,7 @@
             font-style: bold;
             margin-bottom: 5px;
             letter-spacing: -1px;
-            color: #fff;
+            color: #000;
         }
 
         .section-header p {
@@ -547,6 +528,7 @@
             margin: 0; /* Override margin from .section */
             overflow: hidden; /* Hide background overflow */
             min-height: 100vh; /* Ensure it fills at least the viewport height */
+            background: #f9f9f9;
         }
 
         /* New wrapper for content */
@@ -556,33 +538,17 @@
             padding: 40px; /* Add both vertical and horizontal padding to the wrapper */
             position: relative; /* Needed to keep content above background */
             z-index: 2; /* Ensure content is above the blurred background */
+            border: 1.5px solid #000;
+            border-radius: 20px;
         }
 
         .section#programme::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('images/programme-background.png'); /* Add background image here */
-            background-size: cover; /* Make it cover the section */
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: blur(5px); /* Apply blur here */
-            -webkit-filter: blur(10px); /* Add for wider browser support */
-            z-index: 0; /* Position behind content */
-            /* Add a dark overlay on the pseudo-element */
-            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark overlay */
-            background-blend-mode: darken; /* Blend the overlay with the image */
-            width: 100%;
-            height: 100%;
+            display: none;
         }
 
         .section#programme .section-header h2,
         .section#programme .section-header p {
-            color: #FFFFFF; /* Post-it note yellow */
-
+            color: #000;
         }
 
         .programme-grid {
@@ -600,7 +566,7 @@
             width: 100%;
             cursor: pointer;
             padding: 20px 0 20px 0;
-            border-bottom: 1px solid #FFFFFF; /* Post-it note yellow */
+            border-bottom: 1px solid #000;
             background: #ffffff00;
             transition: background 0.2s;
             position: relative;
@@ -612,7 +578,7 @@
             font-size: 48px;
             font-family: 'Alte Haas Grotesk', serif;
             font-weight: 700;
-            color: #FFFFFF; /* Post-it note yellow */
+            color: #000;
             line-height: 1;
             min-width: 60px;
             letter-spacing: -2px;
@@ -627,7 +593,7 @@
         }
         .programme-time {
             font-size: 20px;
-            color: #FFFFFF; /* Post-it note yellow */
+            color: #000;
             font-weight: 300;
             letter-spacing: -0.7px;
             margin-bottom: 10px;
@@ -636,7 +602,7 @@
         .programme-title {
             font-size: 30px;
             font-weight: bold;
-            color: #FFFFFF; /* Post-it note yellow */
+            color: #000;
             line-height: 1.1;
             margin-bottom: 10px;
             font-family: 'Alte Haas Grotesk', Arial, sans-serif;
@@ -650,13 +616,13 @@
         }
         .programme-desc {
             font-size: 24px;
-            color: #FFFFFF; /* Post-it note yellow */
+            color: #000;
             font-weight: 300;
             letter-spacing: -0.9px;
             margin-top: 0.2em;
         }
         .programme-cta {
-            color: #FFFFFF; /* Post-it note yellow */
+            color: #000;
             opacity: 0.6;
             font-size: 18px;
             font-family: 'Alte Haas Grotesk', Arial, sans-serif;
@@ -679,7 +645,7 @@
             max-height: 0;
             opacity: 0;
             background: #f7f7f700;
-            color: #FFFFFF; /* Post-it note yellow */
+            color: #000;
             font-size: 24px;
             font-weight: 300;
             letter-spacing: -0.7px;
@@ -700,7 +666,7 @@
         .programme-panelists.open::after {
             content: '';
             display: block;
-            border-bottom: 1px solid #FFFFFF; /* Post-it note yellow */
+            border-bottom: 1px solid #000;
             margin: 32px -48px 0 -48px;
         }
 
@@ -895,7 +861,7 @@
             z-index: 0;
             width: 100%;
             height: 320px;
-            background: #f9f9f9f9;
+            background: #f9f9f9;
             overflow: hidden;
             /* Ensure it actually sticks */
             top: calc(100vh - 320px);
@@ -909,8 +875,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #f5f5f5; /* Match the footer background */
-            color: #1a1a1a; /* Black text on white background */
+            background: #f9f9f9f9; /* Match the footer background */
+            color: #000; /* Black text on white background */
             text-align: center;
             font-size: 13vw;
             font-weight: 900;
@@ -948,7 +914,7 @@
             font-size: 16px;
             font-weight: 500;
             margin-bottom: 10px;
-            color: #1a1a1a;
+            color: #000;
         }
 
         .footer-section {
@@ -965,7 +931,7 @@
         }
 
         .footer-section a:hover {
-            color: #1a1a1a;
+            color: #000;
         }
 
         /* Responsive */
@@ -1183,7 +1149,7 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-left">
-                <img src="images/HU.svg" alt="Humboldt University Logo" class="hero-logo" />
+                <img src="images/HU.svg" alt="Humboldt University Logo" class="hero-logo" style="filter: invert(1);" />
                 <h1>Humboldt<br>Dispute Resolution<br>Conference 2025</h1>
                 <p class="subtitle" style="margin-top: 20px;">Monday, 8 September 2025</p>
             </div>
@@ -1383,13 +1349,14 @@
         <div class="footer-banner">HDRC 2025</div>
         <footer class="footer">
             <div class="footer-section">
-                <h4>Contact the Organizers</h4>
-                <p>E: alumni.humboldt.idr@gmail.com</p>
-            </div>
-            <div class="footer-section">
-                <h4>Organized By</h4>
+                <h4>Organisers</h4>
                 <p>Humboldt International Dispute Resolution Association e.V.</p>
                 <p>Website designed by <a href="https://www.jackylui.com" target="_blank" rel="noopener noreferrer">Jacky Lui</a> (Class of 2019)</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>E: alumni.humboldt.idr@gmail.com</p>
+
 
             </div>
             <div class="footer-section">
