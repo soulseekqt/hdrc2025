@@ -293,7 +293,12 @@
             border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             margin-top: 150px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
+        .hero-center-image.jiggle {
+            animation: jiggle 0.5s ease-in-out;
         }
 
         .hero-left {
@@ -890,6 +895,12 @@
             font-weight: 300;
             margin-bottom: 20px;
             letter-spacing: -2px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .registration h2.jiggle {
+            animation: jiggle 0.5s ease-in-out;
         }
 
         .registration p {
@@ -898,16 +909,6 @@
             font-weight: 300;
         }
 
-        /* Chat Dialog Box Styling */
-        .chat-dialog-box {
-            background-color: #fff; /* White background for the dialog box */
-            border: 0px solid #ccc; /* Light grey border */
-            border-radius: 20px; /* Slightly rounded corners */
-            padding: 20px; /* Padding inside the dialog box */
-            max-width: 500px; /* Match the max-width of the imessage-container */
-            margin: 40px auto 40px auto; /* Center and add space above and below */
-            box-shadow: 6px 6px 0 #000; /* Post-it shadow */
-        }
 
         .deadline {
             /* Post-it Note Styling */
@@ -1249,7 +1250,113 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
             opacity: 1;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
 
+        /* Enlarged image overlay */
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .enlarged-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .image-overlay.active .enlarged-image {
+            transform: scale(1);
+        }
+
+        .close-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: background 0.3s ease;
+        }
+
+        .close-overlay:hover {
+            background: rgba(255, 255, 255, 0.0);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            color: #000000;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-arrow.prev {
+            left: 20px;
+        }
+
+        .nav-arrow.next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-arrow {
+                top: auto;
+                bottom: 20px;
+                transform: none;
+                background: rgba(255, 255, 255, 0.8);
+            }
+
+            .nav-arrow.prev {
+                left: 50%;
+                transform: translateX(-60px);
+            }
+
+            .nav-arrow.next {
+                right: 50%;
+                transform: translateX(60px);
+            }
+
+            .enlarged-image {
+                max-height: 80vh; /* Reduce max height to make room for arrows */
+            }
         }
     </style>
 </head>
@@ -1300,9 +1407,9 @@
         <section class="marquee-section">
             <div class="marquee-container">
                     <div class="marquee-row">
-                      <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
                       <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
                       <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                      <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
                       <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
                       <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
                       <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
@@ -1637,6 +1744,14 @@
         </section>
     </div>
 
+    <!-- Image Overlay -->
+    <div class="image-overlay">
+        <img class="enlarged-image" src="" alt="Enlarged image">
+        <button class="close-overlay">&times;</button>
+        <button class="nav-arrow prev">&lt;</button>
+        <button class="nav-arrow next">&gt;</button>
+    </div>
+
     <!-- Sticky Footer -->
     <div class="sticky-footer">
         <div class="footer-banner">HDRC 2025</div>
@@ -1768,6 +1883,28 @@
                 }, 500); // Match animation duration
             });
         }
+
+        // Hero center image jiggle on click
+        const heroImage = document.querySelector('.hero-center-image');
+        if (heroImage) {
+            heroImage.addEventListener('click', function() {
+                heroImage.classList.add('jiggle');
+                setTimeout(() => {
+                    heroImage.classList.remove('jiggle');
+                }, 500);
+            });
+        }
+
+        // Register (Now) text jiggle on click
+        const registerTitle = document.querySelector('.registration h2');
+        if (registerTitle) {
+            registerTitle.addEventListener('click', function() {
+                registerTitle.classList.add('jiggle');
+                setTimeout(() => {
+                    registerTitle.classList.remove('jiggle');
+                }, 500);
+            });
+        }
     });
 
     // Sponsors text box jiggle on click
@@ -1833,6 +1970,99 @@
                 cancelAnimationFrame(animationFrame);
             }
         });
+    });
+
+    // Enlarged image overlay functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const marqueeImages = document.querySelectorAll('.marquee-image');
+        let currentImageIndex = 0;
+        let allImages = [];
+
+        // Collect all images from all marquee rows
+        document.querySelectorAll('.marquee-row').forEach(row => {
+            row.querySelectorAll('.marquee-image').forEach(img => {
+                allImages.push(img);
+            });
+        });
+
+        marqueeImages.forEach((image, index) => {
+            image.addEventListener('click', function() {
+                currentImageIndex = allImages.indexOf(image);
+                openOverlay(image.src);
+            });
+        });
+
+        function openOverlay(src) {
+            const overlay = document.querySelector('.image-overlay');
+            const enlargedImage = overlay.querySelector('.enlarged-image');
+            const prevButton = overlay.querySelector('.nav-arrow.prev');
+            const nextButton = overlay.querySelector('.nav-arrow.next');
+
+            enlargedImage.src = src;
+            overlay.classList.add('active');
+
+            // Update navigation buttons
+            updateNavigationButtons();
+
+            // Event listeners for navigation
+            prevButton.onclick = function(e) {
+                e.stopPropagation();
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    enlargedImage.src = allImages[currentImageIndex].src;
+                    updateNavigationButtons();
+                }
+            };
+
+            nextButton.onclick = function(e) {
+                e.stopPropagation();
+                if (currentImageIndex < allImages.length - 1) {
+                    currentImageIndex++;
+                    enlargedImage.src = allImages[currentImageIndex].src;
+                    updateNavigationButtons();
+                }
+            };
+
+            // Close overlay when clicking outside the image
+            overlay.onclick = function(e) {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            };
+
+            // Close button functionality
+            overlay.querySelector('.close-overlay').onclick = function() {
+                overlay.classList.remove('active');
+            };
+
+            // Keyboard navigation
+            document.addEventListener('keydown', handleKeyPress);
+        }
+
+        function updateNavigationButtons() {
+            const prevButton = document.querySelector('.nav-arrow.prev');
+            const nextButton = document.querySelector('.nav-arrow.next');
+
+            prevButton.classList.toggle('disabled', currentImageIndex === 0);
+            nextButton.classList.toggle('disabled', currentImageIndex === allImages.length - 1);
+        }
+
+        function handleKeyPress(e) {
+            const overlay = document.querySelector('.image-overlay');
+            if (!overlay.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
+                currentImageIndex--;
+                overlay.querySelector('.enlarged-image').src = allImages[currentImageIndex].src;
+                updateNavigationButtons();
+            } else if (e.key === 'ArrowRight' && currentImageIndex < allImages.length - 1) {
+                currentImageIndex++;
+                overlay.querySelector('.enlarged-image').src = allImages[currentImageIndex].src;
+                updateNavigationButtons();
+            } else if (e.key === 'Escape') {
+                overlay.classList.remove('active');
+            }
+        }
     });
     </script>
 </body>
