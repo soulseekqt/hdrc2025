@@ -575,26 +575,61 @@
         /* Programme Section */
         .section#programme {
             position: relative;
-            width: 100%; /* Use 100% instead of 100vw */
-            padding: 0; /* Remove padding from the section */
-            max-width: none; /* Override max-width from .section */
-            margin: 0; /* Override margin from .section */
-            overflow: hidden; /* Hide background overflow */
-            min-height: 100vh; /* Ensure it fills at least the viewport height */
+            width: 100%;
+            padding: 0;
+            max-width: none;
+            margin: 0;
+            overflow: visible; /* Changed from hidden to visible */
+            min-height: 100vh;
             background: #f9f9f9;
+        }
+
+        /* Programme Marquee Background */
+        .programme-marquee {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+            pointer-events: none;
+            padding: 20px 0;
+            overflow: visible; /* Added to ensure images aren't cut off */
+        }
+
+        .programme-marquee .marquee-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 150px; /* Added padding to ensure last row is visible */
+        }
+
+        .programme-marquee .marquee-row {
+            margin-top: 0;
+            display: flex;
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .programme-marquee .marquee-image {
+            width: 200px;
+            height: 150px;
+            opacity: 0.5;
+            object-fit: cover; /* Ensure images maintain aspect ratio */
         }
 
         /* New wrapper for content */
         .programme-content-wrapper {
-            max-width: 800px; /* Limit content width */
-            margin: 0 auto; /* Center content */
-            padding: 40px; /* Add both vertical and horizontal padding to the wrapper */
-            position: relative; /* Needed to keep content above background */
-            z-index: 2; /* Ensure content is above the blurred background */
-            /* border: 1.5px solid #000; */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
             border-radius: 20px;
             background: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.04), 0 0 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 150px; /* Added margin to ensure content doesn't overlap with marquee */
         }
 
         .section#programme::before {
@@ -802,6 +837,52 @@
             padding: 30px 20px;
             border-radius: 20px;
             background: #f9f9f9;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* Registration Marquee Background */
+        .registration-marquee {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+            pointer-events: none;
+            padding: 20px 0;
+            overflow: visible;
+        }
+
+        .registration-marquee .marquee-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 150px;
+        }
+
+        .registration-marquee .marquee-row {
+            margin-top: 0;
+            display: flex;
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .registration-marquee .marquee-image {
+            width: 200px;
+            height: 150px;
+            opacity: 0.5;
+            object-fit: cover;
+        }
+
+        .registration-content {
+            position: relative;
+            z-index: 2;
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 150px;
         }
 
         .registration h2 {
@@ -1277,6 +1358,155 @@
 
         <!-- Programme Section -->
         <section id="programme" class="section">
+            <!-- Programme Marquee Background -->
+            <div class="programme-marquee">
+                <div class="marquee-container">
+                    <div class="marquee-row">
+                        <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
+                        <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                        <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
+                        <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
+                        <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
+                        <img src="images/selection/image6.jpg" alt="Image 6" class="marquee-image">
+                        <img src="images/selection/image7.jpg" alt="Image 7" class="marquee-image">
+                        <img src="images/selection/image8.jpg" alt="Image 8" class="marquee-image">
+                        <img src="images/selection/image9.jpg" alt="Image 9" class="marquee-image">
+                        <img src="images/selection/image10.jpg" alt="Image 10" class="marquee-image">
+                        <img src="images/selection/image11.jpg" alt="Image 11" class="marquee-image">
+                        <img src="images/selection/image12.jpg" alt="Image 12" class="marquee-image">
+                        <img src="images/selection/image13.jpg" alt="Image 13" class="marquee-image">
+                        <img src="images/selection/image14.jpg" alt="Image 14" class="marquee-image">
+                        <img src="images/selection/image15.jpg" alt="Image 15" class="marquee-image">
+                        <img src="images/selection/image16.jpg" alt="Image 16" class="marquee-image">
+                        <img src="images/selection/image17.jpg" alt="Image 17" class="marquee-image">
+                        <img src="images/selection/image18.jpg" alt="Image 18" class="marquee-image">
+                        <img src="images/selection/image19.jpg" alt="Image 19" class="marquee-image">
+                        <img src="images/selection/image20.jpg" alt="Image 20" class="marquee-image">
+                        <img src="images/selection/image21.jpg" alt="Image 21" class="marquee-image">
+                        <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
+                    </div>
+                    <div class="marquee-row">
+                        <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
+                        <img src="images/selection/image21.jpg" alt="Image 21" class="marquee-image">
+                        <img src="images/selection/image20.jpg" alt="Image 20" class="marquee-image">
+                        <img src="images/selection/image19.jpg" alt="Image 19" class="marquee-image">
+                        <img src="images/selection/image18.jpg" alt="Image 18" class="marquee-image">
+                        <img src="images/selection/image17.jpg" alt="Image 17" class="marquee-image">
+                        <img src="images/selection/image16.jpg" alt="Image 16" class="marquee-image">
+                        <img src="images/selection/image15.jpg" alt="Image 15" class="marquee-image">
+                        <img src="images/selection/image14.jpg" alt="Image 14" class="marquee-image">
+                        <img src="images/selection/image13.jpg" alt="Image 13" class="marquee-image">
+                        <img src="images/selection/image12.jpg" alt="Image 12" class="marquee-image">
+                        <img src="images/selection/image11.jpg" alt="Image 11" class="marquee-image">
+                        <img src="images/selection/image10.jpg" alt="Image 10" class="marquee-image">
+                        <img src="images/selection/image9.jpg" alt="Image 9" class="marquee-image">
+                        <img src="images/selection/image8.jpg" alt="Image 8" class="marquee-image">
+                        <img src="images/selection/image7.jpg" alt="Image 7" class="marquee-image">
+                        <img src="images/selection/image6.jpg" alt="Image 6" class="marquee-image">
+                        <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
+                        <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
+                        <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
+                        <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                        <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
+                    </div>
+                    <div class="marquee-row">
+                        <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
+                        <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                        <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
+                        <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
+                        <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
+                        <img src="images/selection/image6.jpg" alt="Image 6" class="marquee-image">
+                        <img src="images/selection/image7.jpg" alt="Image 7" class="marquee-image">
+                        <img src="images/selection/image8.jpg" alt="Image 8" class="marquee-image">
+                        <img src="images/selection/image9.jpg" alt="Image 9" class="marquee-image">
+                        <img src="images/selection/image10.jpg" alt="Image 10" class="marquee-image">
+                        <img src="images/selection/image11.jpg" alt="Image 11" class="marquee-image">
+                        <img src="images/selection/image12.jpg" alt="Image 12" class="marquee-image">
+                        <img src="images/selection/image13.jpg" alt="Image 13" class="marquee-image">
+                        <img src="images/selection/image14.jpg" alt="Image 14" class="marquee-image">
+                        <img src="images/selection/image15.jpg" alt="Image 15" class="marquee-image">
+                        <img src="images/selection/image16.jpg" alt="Image 16" class="marquee-image">
+                        <img src="images/selection/image17.jpg" alt="Image 17" class="marquee-image">
+                        <img src="images/selection/image18.jpg" alt="Image 18" class="marquee-image">
+                        <img src="images/selection/image19.jpg" alt="Image 19" class="marquee-image">
+                        <img src="images/selection/image20.jpg" alt="Image 20" class="marquee-image">
+                        <img src="images/selection/image21.jpg" alt="Image 21" class="marquee-image">
+                        <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
+                    </div>
+                    <div class="marquee-row">
+                        <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
+                        <img src="images/selection/image21.jpg" alt="Image 21" class="marquee-image">
+                        <img src="images/selection/image20.jpg" alt="Image 20" class="marquee-image">
+                        <img src="images/selection/image19.jpg" alt="Image 19" class="marquee-image">
+                        <img src="images/selection/image18.jpg" alt="Image 18" class="marquee-image">
+                        <img src="images/selection/image17.jpg" alt="Image 17" class="marquee-image">
+                        <img src="images/selection/image16.jpg" alt="Image 16" class="marquee-image">
+                        <img src="images/selection/image15.jpg" alt="Image 15" class="marquee-image">
+                        <img src="images/selection/image14.jpg" alt="Image 14" class="marquee-image">
+                        <img src="images/selection/image13.jpg" alt="Image 13" class="marquee-image">
+                        <img src="images/selection/image12.jpg" alt="Image 12" class="marquee-image">
+                        <img src="images/selection/image11.jpg" alt="Image 11" class="marquee-image">
+                        <img src="images/selection/image10.jpg" alt="Image 10" class="marquee-image">
+                        <img src="images/selection/image9.jpg" alt="Image 9" class="marquee-image">
+                        <img src="images/selection/image8.jpg" alt="Image 8" class="marquee-image">
+                        <img src="images/selection/image7.jpg" alt="Image 7" class="marquee-image">
+                        <img src="images/selection/image6.jpg" alt="Image 6" class="marquee-image">
+                        <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
+                        <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
+                        <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
+                        <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                        <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
+                    </div>
+                    <div class="marquee-row">
+                        <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
+                        <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                        <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
+                        <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
+                        <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
+                        <img src="images/selection/image6.jpg" alt="Image 6" class="marquee-image">
+                        <img src="images/selection/image7.jpg" alt="Image 7" class="marquee-image">
+                        <img src="images/selection/image8.jpg" alt="Image 8" class="marquee-image">
+                        <img src="images/selection/image9.jpg" alt="Image 9" class="marquee-image">
+                        <img src="images/selection/image10.jpg" alt="Image 10" class="marquee-image">
+                        <img src="images/selection/image11.jpg" alt="Image 11" class="marquee-image">
+                        <img src="images/selection/image12.jpg" alt="Image 12" class="marquee-image">
+                        <img src="images/selection/image13.jpg" alt="Image 13" class="marquee-image">
+                        <img src="images/selection/image14.jpg" alt="Image 14" class="marquee-image">
+                        <img src="images/selection/image15.jpg" alt="Image 15" class="marquee-image">
+                        <img src="images/selection/image16.jpg" alt="Image 16" class="marquee-image">
+                        <img src="images/selection/image17.jpg" alt="Image 17" class="marquee-image">
+                        <img src="images/selection/image18.jpg" alt="Image 18" class="marquee-image">
+                        <img src="images/selection/image19.jpg" alt="Image 19" class="marquee-image">
+                        <img src="images/selection/image20.jpg" alt="Image 20" class="marquee-image">
+                        <img src="images/selection/image21.jpg" alt="Image 21" class="marquee-image">
+                        <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
+                    </div>
+                    <div class="marquee-row">
+                        <img src="images/selection/image22.jpg" alt="Image 22" class="marquee-image">
+                        <img src="images/selection/image21.jpg" alt="Image 21" class="marquee-image">
+                        <img src="images/selection/image20.jpg" alt="Image 20" class="marquee-image">
+                        <img src="images/selection/image19.jpg" alt="Image 19" class="marquee-image">
+                        <img src="images/selection/image18.jpg" alt="Image 18" class="marquee-image">
+                        <img src="images/selection/image17.jpg" alt="Image 17" class="marquee-image">
+                        <img src="images/selection/image16.jpg" alt="Image 16" class="marquee-image">
+                        <img src="images/selection/image15.jpg" alt="Image 15" class="marquee-image">
+                        <img src="images/selection/image14.jpg" alt="Image 14" class="marquee-image">
+                        <img src="images/selection/image13.jpg" alt="Image 13" class="marquee-image">
+                        <img src="images/selection/image12.jpg" alt="Image 12" class="marquee-image">
+                        <img src="images/selection/image11.jpg" alt="Image 11" class="marquee-image">
+                        <img src="images/selection/image10.jpg" alt="Image 10" class="marquee-image">
+                        <img src="images/selection/image9.jpg" alt="Image 9" class="marquee-image">
+                        <img src="images/selection/image8.jpg" alt="Image 8" class="marquee-image">
+                        <img src="images/selection/image7.jpg" alt="Image 7" class="marquee-image">
+                        <img src="images/selection/image6.jpg" alt="Image 6" class="marquee-image">
+                        <img src="images/selection/image5.jpg" alt="Image 5" class="marquee-image">
+                        <img src="images/selection/image4.jpg" alt="Image 4" class="marquee-image">
+                        <img src="images/selection/image3.jpg" alt="Image 3" class="marquee-image">
+                        <img src="images/selection/image2.jpg" alt="Image 2" class="marquee-image">
+                        <img src="images/selection/image1.jpg" alt="Image 1" class="marquee-image">
+                    </div>
+                </div>
+            </div>
             <div class="programme-content-wrapper">
                 <div class="section-header">
                   <h2>Programme</h2>
@@ -1569,8 +1799,8 @@
                 const currentTransform = new WebKitCSSMatrix(getComputedStyle(row).transform);
                 const currentX = currentTransform.m41;
 
-                if (index === 0) {
-                    // First row moves left when scrolling down
+                if (index % 2 === 0) {
+                    // Even rows move left when scrolling down
                     const newX = currentX + scrollVelocity;
                     row.style.transform = `translateX(${newX}px)`;
 
@@ -1579,7 +1809,7 @@
                         row.style.transform = 'translateX(0)';
                     }
                 } else {
-                    // Second row moves right when scrolling down
+                    // Odd rows move right when scrolling down
                     const newX = currentX - scrollVelocity;
                     row.style.transform = `translateX(${newX}px)`;
 
