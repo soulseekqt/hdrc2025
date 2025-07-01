@@ -412,6 +412,7 @@
 
         .section-header {
             margin-bottom: 10px;
+
         }
 
         .section-header h2 {
@@ -546,6 +547,7 @@
         .section-sponsors-wrapper .section-header h2,
         .section-sponsors-wrapper .section-header p {
             color: #000;
+            text-align: center;
         }
 
         .sponsors-text-box {
@@ -695,7 +697,7 @@
             font-family: 'Alte Haas Grotesk', Arial, sans-serif;
         }
         .programme-title {
-            font-size: 30px;
+            font-size: 20px;
             font-weight: bold;
             color: #000;
             line-height: 1.1;
@@ -703,24 +705,24 @@
             font-family: 'Alte Haas Grotesk', Arial, sans-serif;
         }
         .programme-bracket {
-            font-size: 25px;
+            font-size: 18px;
             font-variant: small-caps;
-            letter-spacing: -0.7px;
+            letter-spacing: -0.3px;
             font-weight: 700;
             vertical-align: middle;
         }
         .programme-desc {
-            font-size: 24px;
+            font-size: 18px;
             color: #000;
             font-weight: 300;
-            letter-spacing: -0.9px;
+            letter-spacing: -0.3px;
             margin-top: 0.2em;
             font-family: 'Century Schoolbook', serif;
         }
         .programme-cta {
             color: #000;
             opacity: 0.6;
-            font-size: 18px;
+            font-size: 16px;
             font-family: 'Century Schoolbook', serif;
             font-weight: 400;
             display: flex;
@@ -742,10 +744,10 @@
             opacity: 0;
             background: #f7f7f700;
             color: #000;
-            font-size: 24px;
+            font-size: 16px;
             font-family: 'Century Schoolbook', serif;
             font-weight: 300;
-            letter-spacing: -0.7px;
+            letter-spacing: -0.3px;
             padding: 0 10px;
             border-radius: 0 0 12px 12px;
             border-top: 0px solid #FFFFFF; /* Post-it note yellow */
@@ -797,42 +799,42 @@
             position: relative;
             left: 50%;
             transform: translateX(-50%);
-            background: #fff;
+            background: #f9f9f9;
             border-top: 0px solid #000000;
             border-bottom: 0px solid #000000;
-            padding: 10px 0;
+            padding: 40px 0;
             margin: 50px 0;
             overflow: hidden;
         }
 
         .sponsors-carousel {
             display: flex;
-            animation: scroll-sponsors 20s linear infinite;
-            gap: 80px;
+            animation: scroll-sponsors 30s linear infinite;
+            gap: 60px;
             align-items: center;
             white-space: nowrap;
         }
 
-        .sponsor-logo-text {
-            font-family: 'Alte Haas Grotesk', sans-serif;
-            font-size: 28px;
-            font-style: bold;
-            color: #000000;
-            white-space: nowrap;
+        .sponsor-logo {
+            height: 60px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
             flex-shrink: 0;
             opacity: 0.7;
-            transition: opacity 0.3s ease;
-            letter-spacing: -1px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            filter: grayscale(100%);
         }
 
-        .sponsor-logo-text:hover {
+        .sponsor-logo:hover {
             opacity: 1;
-            color: #333;
+            transform: scale(1.05);
+            filter: grayscale(0%);
         }
 
         @keyframes scroll-sponsors {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-50%); }
         }
 
         /* Registration Section */
@@ -959,13 +961,13 @@
         /* Responsive */
         @media (max-width: 900px) {
             .programme-row { grid-template-columns: 48px 1fr; padding: 24px 0 16px 0; }
-            .programme-title { font-size: 18px; }
-            .programme-desc { font-size: 14px; }
+            .programme-title { font-size: 16px; }
+            .programme-desc { font-size: 16px; }
             .programme-number { font-size: 24px; min-width: 32px; }
-            .programme-time { font-size: 14px; }
-            .programme-bracket { font-size: 12px; }
-            .programme-panelists, .programme-panelists.open { font-size: 14px; padding: 10px 8px; }
-            .programme-cta { font-size: 12px; }
+            .programme-time { font-size: 16px; }
+            .programme-bracket { font-size: 14px; }
+            .programme-panelists, .programme-panelists.open { font-size: 16px; padding: 10px 8px; }
+            .programme-cta { font-size: 16px; }
             .hero {
                 flex-direction: column;
                 justify-content: flex-start;
@@ -1135,8 +1137,8 @@
             .nav-right {
                 display: none;
             }
-            .sponsors-carousel { gap: 40px; }
-            .sponsor-logo-text { font-size: 20px; }
+            .sponsors-carousel { gap: 30px; }
+            .sponsor-logo { height: 40px; max-width: 120px; }
         }
 
         .badge.jiggle,
@@ -1407,6 +1409,38 @@
             </div>
         </section>
 
+        <!-- Sponsors Section -->
+        <section class="section section-sponsors-wrapper">
+            <div class="section-header">
+                <h2>Event Sponsors</h2>
+            </div>
+
+            <!-- Sponsors Carousel -->
+            <div class="sponsors-carousel-section">
+                <div class="sponsors-carousel">
+                    <!-- First set of logos -->
+                    <img src="logos/mayerbrown.svg" alt="Mayer Brown" class="sponsor-logo">
+                    <img src="logos/noerr.svg" alt="Noerr" class="sponsor-logo">
+                    <img src="logos/cms.svg" alt="CMS" class="sponsor-logo">
+                    <img src="logos/amereller.png" alt="Amereller" class="sponsor-logo">
+                    <img src="logos/rothorn.svg" alt="Rothorn" class="sponsor-logo">
+                    <img src="logos/gatenberg.svg" alt="Gatenberg" class="sponsor-logo">
+                    <!-- Duplicate set for seamless loop -->
+                    <img src="logos/mayerbrown.svg" alt="Mayer Brown" class="sponsor-logo">
+                    <img src="logos/noerr.svg" alt="Noerr" class="sponsor-logo">
+                    <img src="logos/cms.svg" alt="CMS" class="sponsor-logo">
+                    <img src="logos/amereller.png" alt="Amereller" class="sponsor-logo">
+                    <img src="logos/rothorn.svg" alt="Rothorn" class="sponsor-logo">
+                    <img src="logos/gatenberg.svg" alt="Gatenberg" class="sponsor-logo">
+                </div>
+            </div>
+
+            <!-- <div class="sponsors-text-box">
+                <h3>Interested to Support HDRC 2025?</h3>
+                <p>Sponsorship opportunities are open. Please e-mail us for more!</p>
+            </div> -->
+        </section>
+
         <!-- Programme Section -->
         <section id="programme" class="section">
             <!-- Programme Marquee Background -->
@@ -1657,26 +1691,13 @@
             </div>
         </section>
 
-        <!-- Sponsors Section -->
-        <section class="section section-sponsors-wrapper">
-            <div class="section-header">
-                <h2>Sponsors</h2>
-                <!-- <p>Join our distinguished sponsors supporting the future of international dispute resolution</p> -->
-            </div>
-            <div class="sponsors-text-box">
-                <h3>Interested to Support HDRC 2025?</h3>
-                <p>Sponsorship opportunities are open. Please e-mail us for more!</p>
-            </div>
-
-        </section>
-
         <!-- Registration Section -->
         <section id="register" class="section">
             <div class="registration">
                 <h2>Register <span class="programme-bracket">(Now)</span></h2>
                 <p>Conference Date: Monday, 8 September 2025</p>
                 <p>Seats are limited. Register your attendance:</p>
-                <a href="mailto:alumni.humboldt.idr@gmail.com?subject=HDRC%202025%20Registration" class="pill-btn">
+                <a href="mailto:application@idrberlin.de?subject=HDRC%202025%20Registration&body=Dear%20Organisers%0A%0AI%20would%20like%20to%20register%20my%20attendance%20at%20the%20HDRC%202025%20Conference.%20%0A" class="pill-btn">
                   <span class="single-text">Register </span>
                   <span class="scrolling-text">Register  Register  Register  Register  Register  Register  Register  Register  Register  Register </span>
               </a>
