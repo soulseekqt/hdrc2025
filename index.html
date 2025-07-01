@@ -1224,7 +1224,7 @@
             align-items: center;
             z-index: 2000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
         }
 
         .image-overlay.active {
@@ -1237,12 +1237,15 @@
             max-height: 90vh;
             object-fit: contain;
             border-radius: 8px;
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
+            transform: scale(0.85);
+            opacity: 0;
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1);
+            will-change: transform, opacity;
         }
 
-        .image-overlay.active .enlarged-image {
+        .enlarged-image.show {
             transform: scale(1);
+            opacity: 1;
         }
 
         .close-overlay {
@@ -1977,6 +1980,11 @@
 
             enlargedImage.src = src;
             overlay.classList.add('active');
+            enlargedImage.classList.remove('show');
+            // Wait for next frame to trigger animation
+            setTimeout(() => {
+                enlargedImage.classList.add('show');
+            }, 10);
 
             // Update navigation buttons
             updateNavigationButtons();
@@ -1986,7 +1994,11 @@
                 e.stopPropagation();
                 if (currentImageIndex > 0) {
                     currentImageIndex--;
-                    enlargedImage.src = allImages[currentImageIndex].src;
+                    enlargedImage.classList.remove('show');
+                    setTimeout(() => {
+                        enlargedImage.src = allImages[currentImageIndex].src;
+                        setTimeout(() => enlargedImage.classList.add('show'), 10);
+                    }, 200);
                     updateNavigationButtons();
                 }
             };
@@ -1995,7 +2007,11 @@
                 e.stopPropagation();
                 if (currentImageIndex < allImages.length - 1) {
                     currentImageIndex++;
-                    enlargedImage.src = allImages[currentImageIndex].src;
+                    enlargedImage.classList.remove('show');
+                    setTimeout(() => {
+                        enlargedImage.src = allImages[currentImageIndex].src;
+                        setTimeout(() => enlargedImage.classList.add('show'), 10);
+                    }, 200);
                     updateNavigationButtons();
                 }
             };
@@ -2003,17 +2019,27 @@
             // Close overlay when clicking outside the image
             overlay.onclick = function(e) {
                 if (e.target === overlay) {
-                    overlay.classList.remove('active');
+                    closeOverlay();
                 }
             };
 
             // Close button functionality
             overlay.querySelector('.close-overlay').onclick = function() {
-                overlay.classList.remove('active');
+                closeOverlay();
             };
 
             // Keyboard navigation
             document.addEventListener('keydown', handleKeyPress);
+        }
+
+        function closeOverlay() {
+            const overlay = document.querySelector('.image-overlay');
+            const enlargedImage = overlay.querySelector('.enlarged-image');
+            enlargedImage.classList.remove('show');
+            // Wait for animation to finish before hiding overlay
+            setTimeout(() => {
+                overlay.classList.remove('active');
+            }, 350);
         }
 
         function updateNavigationButtons() {
@@ -2026,18 +2052,27 @@
 
         function handleKeyPress(e) {
             const overlay = document.querySelector('.image-overlay');
+            const enlargedImage = overlay.querySelector('.enlarged-image');
             if (!overlay.classList.contains('active')) return;
 
             if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
                 currentImageIndex--;
-                overlay.querySelector('.enlarged-image').src = allImages[currentImageIndex].src;
+                enlargedImage.classList.remove('show');
+                setTimeout(() => {
+                    enlargedImage.src = allImages[currentImageIndex].src;
+                    setTimeout(() => enlargedImage.classList.add('show'), 10);
+                }, 200);
                 updateNavigationButtons();
             } else if (e.key === 'ArrowRight' && currentImageIndex < allImages.length - 1) {
                 currentImageIndex++;
-                overlay.querySelector('.enlarged-image').src = allImages[currentImageIndex].src;
+                enlargedImage.classList.remove('show');
+                setTimeout(() => {
+                    enlargedImage.src = allImages[currentImageIndex].src;
+                    setTimeout(() => enlargedImage.classList.add('show'), 10);
+                }, 200);
                 updateNavigationButtons();
             } else if (e.key === 'Escape') {
-                overlay.classList.remove('active');
+                closeOverlay();
             }
         }
     });
