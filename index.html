@@ -499,10 +499,17 @@
             /* border-left: 1px solid #333; */
             padding-left: 20px;
             padding-bottom: 20px;
-
+            padding-top: 20px;
+            padding-right: 20px;
             border-radius: 20px;
             background: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.04), 0 0 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
 
         .stat-number {
@@ -1149,7 +1156,7 @@
         /* Marquee Section Styles */
         .marquee-section {
             width: 100%;
-            overflow: hidden;
+            overflow: visible;
             background: transparent;
             padding: 40px 0;
             position: relative;
@@ -1158,7 +1165,7 @@
 
         .marquee-container {
             width: 100%;
-            overflow: hidden;
+            overflow: visible;
             white-space: nowrap;
             position: relative;
             z-index: 2;
@@ -1197,6 +1204,10 @@
             opacity: 1;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             cursor: pointer;
+        }
+
+        .marquee-image:hover {
+            transform: scale(1.05);
         }
 
         /* Enlarged image overlay */
