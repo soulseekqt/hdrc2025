@@ -2112,11 +2112,15 @@
         let animationFrame;
 
         // Calculate the width of one complete set of logos
-        const firstSet = carousel.children[0];
         let carouselWidth = 0;
         for (let i = 0; i < carousel.children.length / 2; i++) {
-            carouselWidth += carousel.children[i].offsetWidth + 60; // 60px is the gap
+            carouselWidth += carousel.children[i].offsetWidth;
+            if (i < carousel.children.length / 2 - 1) {
+                carouselWidth += 1000; // 60px is the gap
+            }
         }
+        // Add a small buffer to ensure smoothness
+        carouselWidth += 40;
 
         function animate() {
             scrollAmount += speed;
@@ -2136,8 +2140,12 @@
         window.addEventListener('resize', () => {
             carouselWidth = 0;
             for (let i = 0; i < carousel.children.length / 2; i++) {
-                carouselWidth += carousel.children[i].offsetWidth + 60;
+                carouselWidth += carousel.children[i].offsetWidth;
+                if (i < carousel.children.length / 2 - 1) {
+                    carouselWidth += 60;
+                }
             }
+            carouselWidth += 10;
         });
     });
     </script>
