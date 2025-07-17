@@ -812,10 +812,11 @@
 
         .sponsors-carousel {
             display: flex;
-            animation: scroll-sponsors 30s linear infinite;
             gap: 60px;
             align-items: center;
             white-space: nowrap;
+            /* Removed animation: scroll-sponsors 30s linear infinite; */
+            will-change: transform;
         }
 
         .sponsor-logo {
@@ -833,11 +834,6 @@
             opacity: 1;
             transform: scale(1.05);
             filter: grayscale(0%);
-        }
-
-        @keyframes scroll-sponsors {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
         }
 
         /* Registration Section */
@@ -1456,26 +1452,24 @@
             <div class="sponsors-carousel-section">
                 <div class="sponsors-carousel">
                     <!-- First set of logos -->
-                    <img src="logos/mayerbrown.svg" alt="Mayer Brown" class="sponsor-logo">
-                    <img src="logos/noerr.svg" alt="Noerr" class="sponsor-logo">
-                    <img src="logos/cms.svg" alt="CMS" class="sponsor-logo">
-                    <img src="logos/amereller.png" alt="Amereller" class="sponsor-logo">
-                    <img src="logos/rothorn.svg" alt="Rothorn" class="sponsor-logo">
-                    <img src="logos/gatenberg.svg" alt="Gatenberg" class="sponsor-logo">
+                    <a href="https://www.mayerbrown.com/" target="_blank" rel="noopener noreferrer"><img src="logos/mayerbrown.svg" alt="Mayer Brown" class="sponsor-logo"></a>
+                    <a href="https://www.noerr.com/" target="_blank" rel="noopener noreferrer"><img src="logos/noerr.svg" alt="Noerr" class="sponsor-logo"></a>
+                    <a href="https://cms.law/de/deu/" target="_blank" rel="noopener noreferrer"><img src="logos/cms.svg" alt="CMS" class="sponsor-logo"></a>
+                    <a href="http://amereller.com/" target="_blank" rel="noopener noreferrer"><img src="logos/amereller.png" alt="Amereller" class="sponsor-logo"></a>
+                    <a href="https://rothorn.legal/" target="_blank" rel="noopener noreferrer"><img src="logos/rothorn.svg" alt="Rothorn" class="sponsor-logo"></a>
+                    <a href="https://gantenberg.legal/en/" target="_blank" rel="noopener noreferrer"><img src="logos/gatenberg.svg" alt="Gatenberg" class="sponsor-logo"></a>
+                    <a href="https://www.changing-perspectives.legal/" target="_blank" rel="noopener noreferrer"><img src="logos/bodenheimer.png" alt="Bodenheimer" class="sponsor-logo"></a>
                     <!-- Duplicate set for seamless loop -->
-                    <img src="logos/mayerbrown.svg" alt="Mayer Brown" class="sponsor-logo">
-                    <img src="logos/noerr.svg" alt="Noerr" class="sponsor-logo">
-                    <img src="logos/cms.svg" alt="CMS" class="sponsor-logo">
-                    <img src="logos/amereller.png" alt="Amereller" class="sponsor-logo">
-                    <img src="logos/rothorn.svg" alt="Rothorn" class="sponsor-logo">
-                    <img src="logos/gatenberg.svg" alt="Gatenberg" class="sponsor-logo">
+                    <a href="https://www.mayerbrown.com/" target="_blank" rel="noopener noreferrer"><img src="logos/mayerbrown.svg" alt="Mayer Brown" class="sponsor-logo"></a>
+                    <a href="https://www.noerr.com/" target="_blank" rel="noopener noreferrer"><img src="logos/noerr.svg" alt="Noerr" class="sponsor-logo"></a>
+                    <a href="https://cms.law/de/deu/" target="_blank" rel="noopener noreferrer"><img src="logos/cms.svg" alt="CMS" class="sponsor-logo"></a>
+                    <a href="http://amereller.com/" target="_blank" rel="noopener noreferrer"><img src="logos/amereller.png" alt="Amereller" class="sponsor-logo"></a>
+                    <a href="https://rothorn.legal/" target="_blank" rel="noopener noreferrer"><img src="logos/rothorn.svg" alt="Rothorn" class="sponsor-logo"></a>
+                    <a href="https://gantenberg.legal/en/" target="_blank" rel="noopener noreferrer"><img src="logos/gatenberg.svg" alt="Gatenberg" class="sponsor-logo"></a>
+                    <a href="https://www.changing-perspectives.legal/" target="_blank" rel="noopener noreferrer"><img src="logos/bodenheimer.png" alt="Bodenheimer" class="sponsor-logo"></a>
                 </div>
             </div>
 
-            <!-- <div class="sponsors-text-box">
-                <h3>Interested to Support HDRC 2025?</h3>
-                <p>Sponsorship opportunities are open. Please e-mail us for more!</p>
-            </div> -->
         </section>
 
         <!-- Programme Section -->
@@ -2100,6 +2094,51 @@
                 closeOverlay();
             }
         }
+    });
+
+    // Sponsors Carousel Infinite Scroll (Desktop Only)
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.sponsors-carousel');
+        if (!carousel) return;
+        // Only run on desktop
+        if (window.innerWidth < 900) return;
+
+        // Get the original content and duplicate it properly
+        const originalContent = carousel.innerHTML;
+        carousel.innerHTML = originalContent + originalContent;
+
+        let scrollAmount = 0;
+        let speed = 0.9; // px per frame
+        let animationFrame;
+
+        // Calculate the width of one complete set of logos
+        const firstSet = carousel.children[0];
+        let carouselWidth = 0;
+        for (let i = 0; i < carousel.children.length / 2; i++) {
+            carouselWidth += carousel.children[i].offsetWidth + 60; // 60px is the gap
+        }
+
+        function animate() {
+            scrollAmount += speed;
+            if (scrollAmount >= carouselWidth) {
+                scrollAmount = 0;
+            }
+            carousel.style.transform = `translateX(${-scrollAmount}px)`;
+            animationFrame = requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Pause on hover
+        carousel.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrame));
+        carousel.addEventListener('mouseleave', () => animate());
+
+        // Recalculate width on resize
+        window.addEventListener('resize', () => {
+            carouselWidth = 0;
+            for (let i = 0; i < carousel.children.length / 2; i++) {
+                carouselWidth += carousel.children[i].offsetWidth + 60;
+            }
+        });
     });
     </script>
 </body>
