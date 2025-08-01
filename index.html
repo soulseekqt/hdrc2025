@@ -808,6 +808,9 @@
             padding: 40px 0;
             margin: 50px 0;
             overflow: hidden;
+            /* Ensure proper rendering on iOS */
+            -webkit-transform: translateX(-50%);
+            -webkit-overflow-scrolling: touch;
         }
 
         .sponsors-carousel {
@@ -815,8 +818,31 @@
             gap: 60px;
             align-items: center;
             white-space: nowrap;
-            /* Removed animation: scroll-sponsors 30s linear infinite; */
             will-change: transform;
+        }
+
+        /* CSS fallback animation for mobile and when JS is disabled */
+        @keyframes scroll-sponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @-webkit-keyframes scroll-sponsors {
+            0% { -webkit-transform: translateX(0); }
+            100% { -webkit-transform: translateX(-50%); }
+        }
+
+        .sponsors-carousel.css-fallback {
+            animation: scroll-sponsors 30s linear infinite;
+            /* iOS-specific optimizations */
+            -webkit-animation: scroll-sponsors 30s linear infinite;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            /* Force hardware acceleration */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-perspective: 1000;
+            perspective: 1000;
         }
 
         .sponsor-logo {
@@ -997,6 +1023,19 @@
             }
             .about-text {
                 padding-left: 0;
+            }
+
+            /* Mobile sponsors carousel adjustments */
+            .sponsors-carousel {
+                gap: 30px;
+                /* Ensure smooth animation on mobile */
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+            }
+
+            .sponsor-logo {
+                height: 40px;
+                max-width: 120px;
             }
 
             /* Mobile footer adjustments */
@@ -1656,7 +1695,7 @@
                           <div class="programme-main">
                               <div class="programme-time">13:15-14:15</div>
                               <div class="programme-title">Panel I:</div>
-                              <div class="programme-desc">Rule of Law From Regional and Sectoral Perspectives</div>
+                              <div class="programme-desc">Rule of Law from Regional and Sectoral Perspectives</div>
                               <div class="programme-cta">(View)</div>
                           </div>
                       </div>
@@ -2104,17 +2143,27 @@
         }
     });
 
-    // Sponsors Carousel Infinite Scroll (Desktop Only)
+    // Sponsors Carousel Infinite Scroll (Works on all devices)
     document.addEventListener('DOMContentLoaded', function() {
         const carousel = document.querySelector('.sponsors-carousel');
         if (!carousel) return;
-        // Only run on desktop
-        if (window.innerWidth < 900) return;
 
         // Get the original content and duplicate it properly
         const originalContent = carousel.innerHTML;
         carousel.innerHTML = originalContent + originalContent;
 
+        // Check if we should use CSS animation (mobile or iOS)
+        const isMobile = window.innerWidth < 900;
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isChrome = /Chrome/.test(navigator.userAgent);
+
+        // Use CSS animation for mobile devices or iOS Chrome
+        if (isMobile || (isIOS && isChrome)) {
+            carousel.classList.add('css-fallback');
+            return;
+        }
+
+        // JavaScript animation for desktop
         let scrollAmount = 0;
         let speed = 0.9; // px per frame
         let animationFrame;
@@ -2124,7 +2173,7 @@
         for (let i = 0; i < carousel.children.length / 2; i++) {
             carouselWidth += carousel.children[i].offsetWidth;
             if (i < carousel.children.length / 2 - 1) {
-                carouselWidth += 300; // 60px is the gap
+                carouselWidth += 60; // gap between items
             }
         }
         // Add a small buffer to ensure smoothness
@@ -2138,14 +2187,28 @@
             carousel.style.transform = `translateX(${-scrollAmount}px)`;
             animationFrame = requestAnimationFrame(animate);
         }
-        animate();
 
-        // Pause on hover
-        carousel.addEventListener('mouseenter', () => cancelAnimationFrame(animationFrame));
-        carousel.addEventListener('mouseleave', () => animate());
+        // Start animation with a small delay to ensure proper initialization
+        setTimeout(() => {
+            animate();
+        }, 100);
+
+        // Pause on hover (desktop only)
+        carousel.addEventListener('mouseenter', () => {
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+        });
+        carousel.addEventListener('mouseleave', () => {
+            if (!isMobile) {
+                animate();
+            }
+        });
 
         // Recalculate width on resize
         window.addEventListener('resize', () => {
+            if (isMobile) return; // Don't recalculate on mobile
+
             carouselWidth = 0;
             for (let i = 0; i < carousel.children.length / 2; i++) {
                 carouselWidth += carousel.children[i].offsetWidth;
@@ -2153,7 +2216,7 @@
                     carouselWidth += 60;
                 }
             }
-            carouselWidth += 10;
+            carouselWidth += 100;
         });
     });
     </script>
